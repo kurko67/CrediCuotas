@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout_front/layout_front :: head"></head>
+
+<body class="js">
+    <div id="preloader"></div>
+    <!-- start header area -->
+    <header th:replace="layout/layout_front/layout_front :: header"></header>
+    <!-- end of header area -->
+       <section class="main-slider-area">
+        <div class="active-main-slider owl-carousel">
+            <div class="main-slider-item" th:style="'background:url('+ @{/front/img/slider-1.jpg} +');'">
+                <div class="slider-one-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="main-slider-welcome-text">
+                                    <div class="slider-cell">
+                                        <h2 class="sub-title" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRIght">De Mendoza a todo el Pais, Ofrecemos préstamos personales con tasas de interés bajas y plazos flexibles.</h2>
+                                        <h2 class="main-title" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">¡Solicite hoy!</h2>
+                                        <div class="welcome-button" data-animation-in="fadeInDown" data-animation-out="animate-out fadeOutDown">
+                                            <a href="#" class="btn btn-default button-primary">Solicitar</a>
+                                            <a href="#" class="button-secondary btn btn-default">Contactenos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-slider-item" style="background-image: url(asset/img/slider-1.jpg);">
+                <div class="slider-one-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-left">
+                                <div class="main-slider-welcome-text">
+                                    <div class="slider-cell">
+                                        <h2 class="sub-title" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">98% Customer Satisfied with us.</h2>
+                                        <h2 class="main-title" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">Download our free app to check
+
+<br>your interest rate</h2>
+                                        <div class="welcome-button" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">
+                                            <a href="#" class="btn btn-default button-primary"><span></span>  App STORE</a>
+                                            <a href="#" class="button-secondary btn btn-default"><span></span>  PLAY STORE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-slider-item" style="background-image: url(asset/img/slider-1.jpg);">
+                <div class="slider-one-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main-slider-welcome-text">
+                                    <div class="slider-cell">
+                                        <h2 class="sub-title" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRight">Leading bank loan provider in the market</h2>
+                                        <h2 class="main-title" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRight">Lowest Interest Rate on Home Loan</h2>
+                                        <div class="welcome-button" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRight">
+                                            <a href="#" class="btn btn-default button-primary"><span></span>  App STORE</a>
+                                            <a href="#" class="button-secondary btn btn-default"><span></span>  PLAY STORE</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- start footer -->
+
+    <head th:replace="layout/layout_front/layout_front :: footer"></head>
+
+    <!-- end footer -->
+
+
+</body>
+</html>
