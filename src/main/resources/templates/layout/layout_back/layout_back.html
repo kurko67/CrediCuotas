@@ -87,7 +87,6 @@
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Estadisticas
-                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                 </li>
@@ -117,6 +116,14 @@
                 </li>
 
 
+                <li class="nav-item">
+                    <a th:href="@{/logout}" class="nav-link">
+                        <i class="fa-regular fa-right-from-bracket"></i>
+                        <p>Log out</p>
+                    </a>
+                </li>
+
+
             </ul>
 
         </nav>
@@ -127,7 +134,7 @@
 
 <footer class="main-footer" th:fragment="footer">
     <div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.2.0
+        <b>Version</b> 1.0.0
     </div>
     <strong>Copyright &copy; 2023 <a href="https://adminlte.io">Credicuota</a>.</strong> All rights reserved.
 

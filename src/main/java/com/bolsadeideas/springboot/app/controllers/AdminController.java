@@ -12,7 +12,7 @@ public class AdminController {
     @RequestMapping("/administrador")
     public String index_admin() {
 
-        return "administrator/admin";
+        return "administrador/admin";
     }
 
 
