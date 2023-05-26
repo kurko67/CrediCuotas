@@ -18,6 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
 
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -34,14 +35,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/administrador/admin/**")
+                .antMatchers("/administrador/**")
                 .hasRole("ADMIN")
                 .and()
                 .formLogin()
-                .loginPage("/administrador/login")
-                .failureUrl("/administrador/login?error=true")
+                .loginPage("/login")
+                .failureUrl("/login?error=true")
                 .and()
                 .exceptionHandling().accessDeniedPage("/errores/403");
+
+
 
 
     }
