@@ -86,7 +86,7 @@ Version: 1.0.0
     float: left;
     width: 50px;
     height: 50px;
-    border: 1px solid #24c8a6;
+    border: 1px solid #FF9800;
     text-align: center;
     line-height: 50px;
     border-radius: 3px;
@@ -141,7 +141,7 @@ Version: 1.0.0
 /*start menu area*/
 
 .menu-area {
-    background-color: #2d3248;
+    background-color: #757575;
 }
 
 .menu-area #cssmenu.small-screen #menu-button {
@@ -173,7 +173,7 @@ div#cssmenu {
     position: absolute;
     width: calc(100% - 17px);
     height: 3px;
-    background: #24c8a6;
+    background: #FFC107;
     content: "";
     left: 8.5px;
     top: -3px;
@@ -190,7 +190,7 @@ div#cssmenu {
 
 #cssmenu ul ul li a:hover,
 #cssmenu ul li a:hover {
-    color: #24c8a6;
+    color: #FFC107;
 }
 
 #cssmenu li:hover>ul>li {
@@ -289,8 +289,8 @@ h2.sub-title {
 }
 
 a.btn.btn-default.button-primary {
-    background: #24c8a6;
-    border: 2px solid #24c8a6;
+    background: #FF9800;
+    border: 2px solid #FF9800;
 }
 
 a.button-secondary.btn.btn-default {
@@ -299,15 +299,15 @@ a.button-secondary.btn.btn-default {
 }
 
 a.button-secondary.btn.btn-default:hover {
-    background: #24c8a6;
-    border: 2px solid #24c8a6;
+    background: #757575;
+    border: 2px solid #757575;
     color: #fff
 }
 
 a.btn.btn-default.button-primary:hover {
-    background: #3a7cdd;
+    background: #BDBDBD;
     color: #fff;
-    border-color: #3a7cdd
+    border-color: #BDBDBD
 }
 
 .active-main-slider .owl-nav .owl-prev {
@@ -320,7 +320,7 @@ a.btn.btn-default.button-primary:hover {
     top: 50%;
     margin-top: -25px;
     color: #fff;
-    border: 1px solid #89cddf;
+    border: 1px solid #FFC107;
     border-radius: 50px;
     transition: .4s
 }
@@ -333,7 +333,7 @@ a.btn.btn-default.button-primary:hover {
     right: 20px;
     top: 50%;
     margin-top: -25px;
-    border: 1px solid #89cddf;
+    border: 1px solid #FFECB3;
     text-align: center;
     border-radius: 50px;
     color: #fff;
@@ -341,9 +341,9 @@ a.btn.btn-default.button-primary:hover {
 }
 
 .active-main-slider .owl-nav div:hover {
-    background: #24c8a6;
+    background: #FFC107;
     color: #fff;
-    border-color: #24c8a6
+    border-color: #FFC107
 }
 
 a.button.button-secondary.hvr-bounce-to-right:before {
@@ -814,13 +814,13 @@ section.team-section.section-padding {
     height: 40px;
     line-height: 40px;
     background-color: #fff;
-    color: #24c8a6;
+    color: #FFECB3;
     border-radius: 50px;
     transition: .4s;
 }
 
 .team-link a:hover {
-    background-color: #24c8a6;
+    background-color: #FF9800;
     color: #fff;
 }
 
@@ -1275,7 +1275,7 @@ section.footer-area.section-padding {
 
 .form-widget .btn.btn-default {
     height: 50px;
-    background-color: #24c8a6;
+    background-color: #FFC107;
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
@@ -1285,8 +1285,8 @@ section.footer-area.section-padding {
 }
 
 .form-widget .btn.btn-default:hover {
-    background: #3a7cdd;
-    color: #fff
+    background: #757575;
+    color: #757575
 }
 
 /*end of footer section/*/

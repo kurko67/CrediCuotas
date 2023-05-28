@@ -36,7 +36,7 @@ public class Cliente implements Serializable {
 	private String email;
 
 	@NotEmpty
-	@Pattern(regexp = "[0-9]{2}[-][0-9]{2}[\\d]{3}[0-9]{3}[-][0-9]{1}") // ej 20-35.552.198-3
+	@Pattern(regexp = "[0-9]{2}[-][0-9]{2}[\\d]{3}[0-9]{3}[-][0-9]{1}") // ej 20-35552198-3
 	private String cuil;
 
 

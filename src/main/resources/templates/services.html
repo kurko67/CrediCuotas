@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout_front/layout_front :: head"></head>
+
+<body class="js">
+    <div id="preloader"></div>
+    <!-- start header area -->
+    <header th:replace="layout/layout_front/layout_front :: header"></header>
+    <!-- end of header area -->
+    <!-- start services.html section -->
+    <section class="featured-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="section-title">
+                        <h2>¡Crédito para todo lo que necesites!</h2>
+                        <p>The passages of Lorem Ipsum available but the majority have suffered alteration embarrased</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-featured">
+                        <div class="icon">
+                            <img th:src="@{front/img/icon-1.png}" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>Personales</h4>
+                            <p>Type specimen book it has no centuries suffer altered.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-featured">
+                        <div class="icon">
+                            <img th:src="@{front/img/car.png}" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>Prendarios</h4>
+                            <p>Type specimen book it has no centuries suffer altered.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-featured">
+                        <div class="icon">
+                            <img th:src="@{front/img/home.png}" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>Para tu negocio</h4>
+                            <p>Type specimen book it has no centuries suffer altered.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-featured">
+                        <div class="icon">
+                            <img th:src="@{front/img/education.png}" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>Para tu hogar</h4>
+                            <p>Type specimen book it has no centuries suffer altered.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-featured">
+                        <div class="icon">
+                            <img th:src="@{front/img/money.png}" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>Para educación</h4>
+                            <p>Type specimen book it has no centuries suffer altered.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single-featured">
+                        <div class="icon">
+                            <img th:src="@{front/img/card.png}" alt="">
+                        </div>
+                        <div class="content">
+                            <h4>Para viajar</h4>
+                            <p>Type specimen book it has no centuries suffer altered.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of services section -->
+
+    <!-- end of our partner section -->
+    <!-- start footer -->
+
+    <head th:replace="layout/layout_front/layout_front :: footer"></head>
+
+    <!-- end footer -->
+
+
+</body>
+</html>

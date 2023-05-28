@@ -360,19 +360,19 @@ input:-webkit-autofill:focus {
     display: inline-block;
 }
 .btn.btn-primary{
-    background: #3a7cdd;
+    background: #757575;
 }
 
 .btn.btn-primary:hover{
-    background: #24c8a6;
+    background: #FF9800;
     color: #fff
 }
 
 .btn.btn-default{
-    background: #24c8a6;
+    background: #FFC107;
 }
 .btn.btn-default:hover{
-    background: #3a7cdd;
+    background: #FF9800;
     color: #fff
 }
 .btn.btn-lg{

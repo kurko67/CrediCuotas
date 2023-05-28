@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="right-info">
-                        <p><a th:href="@{/administrador}"><span><i class="fa fa-sign-in"></i>Admin</span> </a></p>
+                        <p><a th:href="@{/administrador}"><span><i class="fa fa-sign-in"></i>Sign in</span> </a></p>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="sitelogo">
-                        <a href="index.html"><img th:src="@{/front/img/logo.png}" alt="" /></a>
+                        <a th:href="@{/}"><img th:src="@{/front/img/logo.png}" alt="" /></a>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="single-address">
-                            <a href="#" class="button btn btn-default btn-sm"><i class="fa fa-reply-all"></i> SOLICITAR PRESTAMO</a>
+                            <a th:href="@{/apply-now}" class="button btn btn-default btn-sm"><i class="fa fa-reply-all"></i> SOLICITAR PRESTAMO</a>
                         </div>
                     </div>
                 </div>
@@ -78,10 +78,10 @@
                 <div class="col-md-11 col-lg-11">
                     <div id="cssmenu">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">NOSOTROS</a></li>
-                            <li><a href="services.html">SERVICIOS</a></li>
-                            <li><a href="contact.html">CONTACTO</a></li>
+                            <li><a th:href="@{/}">HOME</a></li>
+                            <li><a th:href="@{/about}">NOSOTROS</a></li>
+                            <li><a th:href="@{/services}">SERVICIOS</a></li>
+                            <li><a th:href="@{/contact}">CONTACTO</a></li>
                         </ul>
                     </div>
                     </div>

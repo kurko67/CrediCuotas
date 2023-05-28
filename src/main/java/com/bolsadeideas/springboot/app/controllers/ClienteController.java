@@ -1,5 +1,8 @@
 package com.bolsadeideas.springboot.app.controllers;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -11,11 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -44,13 +43,13 @@ public class ClienteController {
 		return "listar";
 	}
 
-	@RequestMapping(value = "/form")
+	@RequestMapping(value = "/apply-now")
 	public String crear(Map<String, Object> model) {
 
 		Cliente cliente = new Cliente();
 		model.put("cliente", cliente);
 		model.put("titulo", "Formulario de Cliente");
-		return "form";
+		return "apply-now";
 	}
 
 	@RequestMapping(value = "/form/{id}")
@@ -77,14 +76,14 @@ public class ClienteController {
 	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Cliente");
-			return "form";
+			return "apply-now";
 		}
 		String mensajeFlash = (cliente.getId() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
 
 		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
-		return "redirect:listar";
+		return "redirect:index";
 	}
 
 	@RequestMapping(value = "/eliminar/{id}")
@@ -96,4 +95,27 @@ public class ClienteController {
 		}
 		return "redirect:/listar";
 	}
+
+	@ModelAttribute("provincia")
+	public List<String> provincias(){
+
+		return Arrays.asList("BUENOS AIRES", "CATAMARCA", "CHACO", "CHUBUT", "CORDOBA","CORRIENTES",
+							"ENTRE RIOS","FORMOSA", "JUJUY", "LA PAMPA", "LA RIOJA", "MENDOZA", "MISIONES",
+				"NEUQUEN", "RIO NEGRO", "SALTA", "SAN JUAN", "SAN LUIS", "SANTA CRUZ", "SANTA FE", "SANTIAGO DEL ESTERO",
+				"TIERRA DEL FUEGO", "TUCUMAN");
+
+	}
+
+	@ModelAttribute("situacion_laboral")
+	public List<String> situacion_laboral(){
+
+		return Arrays.asList("Asig. Univ. por Hijo", "Desocupado", "Empleado Publico", "Jubilado", "Pensionado",
+							"Resp. Inscripto");
+
+	}
+
+
+
+
+
 }
