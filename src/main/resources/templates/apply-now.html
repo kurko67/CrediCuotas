@@ -9,100 +9,94 @@
     <header th:replace="layout/layout_front/layout_front :: header"></header>
     <!-- end of header area -->
 
-    <section class="section-padding">
+    <section class="section-padding contact-us-padding">
         <div class="container">
-
             <div class="row justify-content-center">
-                <h1>Solicitud de credito</h1>
+                <h1>Solicitud de crédito</h1>
                 <div class="col-md-12 col-lg-10">
-                    <form th:action="@{/form}" th:object="${cliente}" method="post">
-                        <div class="form-group">
-                            <label class="col-sm-2 col-form-label">Nombres</label>
-                            <div class="col-sm-6">
-                                <input type="text" th:field="*{nombre}" class="form-control"
-                                       th:errorclass="'form-control alert-danger'" /> <small
-                                    class="form-text text-danger"
-                                    th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                    <form th:action="@{/solicitud}" th:object="${cliente}" method="post">
+                        <div class="row list-input">
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    <input type="text" th:field="*{nombre}" class="form-control"
+                                           th:errorclass="'form-control alert-danger'" placeholder="NOMBRE"/> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 col-form-label">Apellidos</label>
-                            <div class="col-sm-6">
-                                <input type="text" th:field="*{apellido}" class="form-control"
-                                       th:errorclass="'form-control alert-danger'" /> <small
-                                    class="form-text text-danger"
-                                    th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+                                    <input type="text" th:field="*{apellido}" class="form-control"
+                                           th:errorclass="'form-control alert-danger'" placeholder="APELLIDO"/> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 col-form-label">CUIL</label>
-                            <div class="col-sm-6">
-                                <input type="text" th:field="*{cuil}" class="form-control"
-                                       th:errorclass="'form-control alert-danger'" /> <small
-                                    class="form-text text-danger"
-                                    th:if="${#fields.hasErrors('cuil')}" th:errors="*{cuil}"></small>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    <input type="text" th:field="*{cuil}" class="form-control"
+                                           th:errorclass="'form-control alert-danger'" placeholder="CUIL/CUIT"/> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('cuil')}" th:errors="*{cuil}"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 col-form-label">Banco</label>
-                            <div class="col-sm-6">
-                                <input type="text" th:field="*{banco_cobro}" class="form-control"
-                                       th:errorclass="'form-control alert-danger'" /> <small
-                                    class="form-text text-danger"
-                                    th:if="${#fields.hasErrors('banco_cobro')}" th:errors="*{banco_cobro}"></small>
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+                                    <input type="text" th:field="*{banco_cobro}" class="form-control"
+                                           th:errorclass="'form-control alert-danger'" placeholder="BANCO DE COBRO"/> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('banco_cobro')}" th:errors="*{banco_cobro}"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 col-form-label">Teléfono</label>
-                            <div class="col-sm-6">
-                                <input type="text" th:field="*{celular}" class="form-control"
-                                       th:errorclass="'form-control alert-danger'" /> <small
-                                    class="form-text text-danger"
-                                    th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}"></small>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    <input type="text" th:field="*{celular}" class="form-control"
+                                           th:errorclass="'form-control alert-danger'" placeholder="NÚMERO DE TELÉFONO"/> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-6">
-                                <input type="text" th:field="*{email}" class="form-control"
-                                       th:errorclass="'form-control alert-danger'" /> <small
-                                    class="form-text text-danger"
-                                    th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+                                    <input type="text" th:field="*{email}" class="form-control"
+                                           th:errorclass="'form-control alert-danger'" PLACEHOLDER="EMAIL"/> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="provincia" class="col-form-label col-sm-2">Provincia</label>
-                            <div class="col-sm-4">
-                                <select id="provincia" th:field="*{provincia}" class="form-control">
-                                    <option value="">--seleccionar--</option>
-                                    <option th:each="provincia: ${provincia}" th:text="${provincia}" th:value="${provincia}"></option>
-                                </select>
+                            <div class="col-md-6 mr0">
+                                <div class="single-get-touch">
+                                    <select id="provincia" th:field="*{provincia}" class="form-control">
+                                        <option value="">--Seleccionar Provincia--</option>
+                                        <option th:each="provincia: ${provincia}" th:text="${provincia}" th:value="${provincia}"></option>
+                                    </select>
+                                    <small th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}" class="form-text text-danger"></small>
+                                </div>
                             </div>
-                            <div th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}" class="alert alert-danger"></div>
-                        </div>
+                            <div class="col-md-6">
+                                <div class="single-get-touch">
+                                    <select id="situacion_laboral" th:field="*{situacion_laboral}" class="form-control">
+                                        <option value="">--Seleccionar Sit Laboral--</option>
+                                        <option th:each="situacion_laboral: ${situacion_laboral}" th:text="${situacion_laboral}" th:value="${situacion_laboral}"></option>
+                                    </select>
+                                    <small th:if="${#fields.hasErrors('situacion_laboral')}" th:errors="*{situacion_laboral}" class="form-text text-danger"></small>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="situacion_laboral" class="col-form-label col-sm-2">Situacion Laboral</label>
-                            <div class="col-sm-4">
-                                <select id="situacion_laboral" th:field="*{situacion_laboral}" class="form-control">
-                                    <option value="">--seleccionar--</option>
-                                    <option th:each="situacion_laboral: ${situacion_laboral}" th:text="${situacion_laboral}" th:value="${situacion_laboral}"></option>
-                                </select>
                             </div>
-                            <div th:if="${#fields.hasErrors('situacion_laboral')}" th:errors="*{situacion_laboral}" class="alert alert-danger"></div>
-                        </div>
 
-                        <div class="form-group row">
-                            <div class="col-sm-6">
-                                <input type="submit" value="Crear Cliente" class="btn btn-secondary" />
+                            <div class="col-md-12">
+                                <div class="single-get-touch">
+                                    <input type="submit" value="ENVIAR SOLICITUD" class="button btn btn-default btn-lg" />
+                                </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+
 
     <!-- end of our partner section -->
     <!-- start footer -->

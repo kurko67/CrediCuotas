@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout_front/layout_front :: head"></head>
+
+<body class="js">
+<div id="preloader"></div>
+<!-- start header area -->
+<header th:replace="layout/layout_front/layout_front :: header"></header>
+<!-- end of header area -->
+<section class="about-page-shortcode section-padding">
+    <div class="container rowpadding-with-border">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="single-image">
+                    <img th:src="@{/front/img/about.jpg}" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-content">
+                    <h2>Acerca de Nosotros</h2>
+
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title">
+                    <h2>Nuestros socios</h2>
+                    <p>The passages of Lorem Ipsum available but the major have suffered alteration embarrased</p>
+                </div>
+            </div>
+        </div>
+        <div class="brand-slider-two owl-carousel">
+            <div class="single-brand round-border">
+                <img th:src="@{/front/img/brand-6.png}" alt="">
+            </div>
+            <div class="single-brand round-border">
+                <img th:src="@{/front/img/brand-7.png}" alt="">
+            </div>
+            <div class="single-brand round-border">
+                <img th:src="@{/front/img/brand-8.png}" alt="">
+            </div>
+            <div class="single-brand round-border">
+                <img th:src="@{/front/img/brand-9.png}" alt="">
+            </div>
+            <div class="single-brand round-border">
+                <img th:src="@{/front/img/brand-10.png}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+
+    <!-- end of our partner section -->
+    <!-- start footer -->
+
+    <head th:replace="layout/layout_front/layout_front :: footer"></head>
+
+    <!-- end footer -->
+
+
+</body>
+</html>
