@@ -29,29 +29,28 @@ public class ClienteController {
 	@Autowired
 	private IClienteService clienteService;
 
-	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	@RequestMapping(value = "/administrador/admin", method = RequestMethod.GET)
 	public String listar(@RequestParam(name="page", defaultValue="0") int page, Model model) {
 		
-		Pageable pageRequest = PageRequest.of(page, 4);
+		Pageable pageRequest = PageRequest.of(page, 8);
 		
 		Page<Cliente> clientes = clienteService.findAll(pageRequest);
 		
-		PageRender<Cliente> pageRender = new PageRender<Cliente>("/listar", clientes);
+		PageRender<Cliente> pageRender = new PageRender<Cliente>("/administrador/admin", clientes);
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("page", pageRender);
-		return "listar";
+		return "/administrador/admin";
 	}
 
 	@RequestMapping(value = "/apply-now")
 	public String crear(Map<String, Object> model) {
-
 		Cliente cliente = new Cliente();
 		model.put("cliente", cliente);
 		return "apply-now";
 	}
 
-	@RequestMapping(value = "/form/{id}")
+	@RequestMapping(value = "/administrador/form/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
 		Cliente cliente = null;
@@ -60,15 +59,15 @@ public class ClienteController {
 			cliente = clienteService.findOne(id);
 			if (cliente == null) {
 				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
-				return "redirect:/listar";
+				return "redirect:/administrador/admin";
 			}
 		} else {
 			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
-			return "redirect:/listar";
+			return "/administrador/admin";
 		}
 		model.put("cliente", cliente);
 		model.put("titulo", "Editar Cliente");
-		return "form";
+		return "/administrador/admin/form";
 	}
 
 	@RequestMapping(value = "/solicitud", method = RequestMethod.POST)
@@ -85,7 +84,7 @@ public class ClienteController {
 		return "redirect:/thank-you";
 	}
 
-	@RequestMapping(value = "/eliminar/{id}")
+	@RequestMapping(value = "/administrador/eliminar/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
 		if (id > 0) {
@@ -112,6 +111,7 @@ public class ClienteController {
 							"Resp. Inscripto");
 
 	}
+
 
 
 

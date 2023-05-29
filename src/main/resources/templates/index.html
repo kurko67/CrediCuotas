@@ -20,8 +20,8 @@
                                         <h2 class="sub-title" data-animation-in="fadeInRight" data-animation-out="animate-out fadeOutRIght">De Mendoza a todo el Pais, Ofrecemos préstamos personales para tus proyectos.</h2>
                                         <h2 class="main-title" data-animation-in="fadeInLeft" data-animation-out="animate-out fadeOutLeft">¡Solicite hoy!</h2>
                                         <div class="welcome-button" data-animation-in="fadeInDown" data-animation-out="animate-out fadeOutDown">
-                                            <a href="#" class="btn btn-default button-primary">Solicitar</a>
-                                            <a href="#" class="button-secondary btn btn-default">Contactenos</a>
+                                            <a th:href="@{/apply-now}" class="btn btn-default button-primary">Solicitar</a>
+                                            <a th:href="@{/contact}" class="button-secondary btn btn-default">Contactenos</a>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
     </section>
     <!-- start footer -->
 
-    <head th:replace="layout/layout_front/layout_front :: footer"></head>
+    <footer th:replace="layout/layout_front/layout_front :: footer"></footer>
 
     <!-- end footer -->
 

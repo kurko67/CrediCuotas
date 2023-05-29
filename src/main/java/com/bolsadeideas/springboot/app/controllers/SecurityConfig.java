@@ -43,10 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=true")
                 .and()
                 .exceptionHandling().accessDeniedPage("/errores/403");
-
-
-
-
     }
 
 

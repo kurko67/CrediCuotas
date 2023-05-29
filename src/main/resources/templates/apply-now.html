@@ -35,7 +35,7 @@
                             <div class="col-md-6 mr0">
                                 <div class="single-get-touch">
                                     <input type="text" th:field="*{cuil}" class="form-control"
-                                           th:errorclass="'form-control alert-danger'" placeholder="CUIL/CUIT"/> <small
+                                           th:errorclass="'form-control alert-danger'" placeholder="DNI O CUIL/CUIT" id="cuil"/> <small
                                         class="form-text text-danger"
                                         th:if="${#fields.hasErrors('cuil')}" th:errors="*{cuil}"></small>
                                 </div>
@@ -67,7 +67,7 @@
                             <div class="col-md-6 mr0">
                                 <div class="single-get-touch">
                                     <select id="provincia" th:field="*{provincia}" class="form-control">
-                                        <option value="">--Seleccionar Provincia--</option>
+                                        <option value="">-- Seleccionar Provincia</option>
                                         <option th:each="provincia: ${provincia}" th:text="${provincia}" th:value="${provincia}"></option>
                                     </select>
                                     <small th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}" class="form-text text-danger"></small>
@@ -76,7 +76,7 @@
                             <div class="col-md-6">
                                 <div class="single-get-touch">
                                     <select id="situacion_laboral" th:field="*{situacion_laboral}" class="form-control">
-                                        <option value="">--Seleccionar Sit Laboral--</option>
+                                        <option value="">--Seleccionar situación Laboral</option>
                                         <option th:each="situacion_laboral: ${situacion_laboral}" th:text="${situacion_laboral}" th:value="${situacion_laboral}"></option>
                                     </select>
                                     <small th:if="${#fields.hasErrors('situacion_laboral')}" th:errors="*{situacion_laboral}" class="form-text text-danger"></small>
@@ -101,7 +101,9 @@
     <!-- end of our partner section -->
     <!-- start footer -->
 
-    <head th:replace="layout/layout_front/layout_front :: footer"></head>
+
+
+    <footer th:replace="layout/layout_front/layout_front :: footer"></footer>
 
     <!-- end footer -->
 
