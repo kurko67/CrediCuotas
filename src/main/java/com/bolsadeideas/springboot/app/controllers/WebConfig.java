@@ -40,6 +40,7 @@ public class WebConfig implements WebMvcConfigurer{
         registro.addViewController("/about").setViewName("about");
         registro.addViewController("/services").setViewName("services");
         registro.addViewController("/contact").setViewName("contact");
+        registro.addViewController("/thank-you").setViewName("thank-you");
         registro.addViewController("/login");
         registro.addViewController("/errores/404").setViewName("/errores/404");
         registro.addViewController("/errores/403").setViewName("/errores/403");

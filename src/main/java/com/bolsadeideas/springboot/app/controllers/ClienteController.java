@@ -82,7 +82,7 @@ public class ClienteController {
 		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
-		return "redirect:/thanks";
+		return "redirect:/thank-you";
 	}
 
 	@RequestMapping(value = "/eliminar/{id}")
