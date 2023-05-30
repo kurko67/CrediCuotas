@@ -6,10 +6,7 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "clientes")
@@ -56,20 +53,34 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String banco_cobro;
 
+	private String vendedor;
 
-	/*
-	@NotNull
-	@Column(name = "create_at")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	private String canal;
 
-	 */
+	private Float monto_solicitado;
+
+	private Integer plan;
+
+	private String estado;
+
+	private String observacion;
+
 	private Date createAt;
 
+	private String financiador;
 
 	@PrePersist
 	public void prePersist(){
 		createAt = new Date();
+		this.estado = "EN PROCESO";
+	}
+
+	public String getFinanciador() {
+		return financiador;
+	}
+
+	public void setFinanciador(String financiador) {
+		this.financiador = financiador;
 	}
 
 
@@ -189,6 +200,53 @@ public class Cliente implements Serializable {
 		this.banco_cobro = banco_cobro;
 	}
 
+	public String getCanal() {
+		return canal;
+	}
+
+	public void setCanal(String canal) {
+		this.canal = canal;
+	}
+
+	public Float getMonto_solicitado() {
+		return monto_solicitado;
+	}
+
+	public void setMonto_solicitado(Float monto_solicitado) {
+		this.monto_solicitado = monto_solicitado;
+	}
+
+	public Integer getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Integer plan) {
+		this.plan = plan;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
 	private static final long serialVersionUID = 1L;
 
+	public String getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(String vendedor) {
+		this.vendedor = vendedor;
+	}
 }

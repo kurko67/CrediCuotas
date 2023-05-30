@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head th:replace="layout/layout_back/layout_back :: head"></head>
+
 <body>
 
 <nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
@@ -8,6 +10,11 @@
 <nav th:replace="layout/layout_back/layout_back :: aside"></nav>
 
 <section>
+
+    <div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
+    <div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
+    <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
+    <div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
 
     <div class="content-wrapper py-3">
 
@@ -17,7 +24,7 @@
                     <h3 class="card-title"><strong>Nuevas</strong> Solicitudes</h3>
                     <div class="card-tools">
 
-                        <nav th:replace="/administrador/paginator-nav :: paginator"></nav>
+                        <a th:href="@{/administrador/form}" class="btn btn-primary">crear cliente</a>
 
                     </div>
                 </div>
@@ -52,8 +59,16 @@
                 </tbody>
             </table>
         </div>
+                <div class="card-footer">
+
+                    <nav th:replace="/administrador/paginator-nav :: paginator"></nav>
+
+                </div>
+
 
              </div>
+
+
 
         </div>
     </div>

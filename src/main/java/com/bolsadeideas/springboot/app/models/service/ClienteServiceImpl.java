@@ -34,7 +34,6 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	@Transactional(readOnly = true)
 	public Cliente findOne(Long id) {
-		// TODO Auto-generated method stub
 		return clienteDao.findById(id).orElse(null);
 	}
 
@@ -43,6 +42,12 @@ public class ClienteServiceImpl implements IClienteService {
 	public void delete(Long id) {
 		clienteDao.deleteById(id);
 		
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Cliente findByCuil(String cuil) {
+		return clienteDao.findByCuil(cuil);
 	}
 
 	@Override

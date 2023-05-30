@@ -17,6 +17,8 @@ public class Rol implements Serializable {
     @NotEmpty
     private String nombre;
 
+
+
     public Long getIdRol() {
         return idRol;
     }

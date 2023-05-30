@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -50,6 +52,15 @@ public class ClienteController {
 		return "apply-now";
 	}
 
+	@RequestMapping(value = "/administrador/form")
+	public String crear_nuevo_cliente(Map<String, Object> model, @AuthenticationPrincipal User user) {
+		String usuario = user.getUsername();
+		Cliente cliente = new Cliente();
+		model.put("cliente", cliente);
+		model.put("user", usuario);
+		return "/administrador/form";
+	}
+
 	@RequestMapping(value = "/administrador/form/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
@@ -76,6 +87,7 @@ public class ClienteController {
 			model.addAttribute("titulo", "Formulario de Cliente");
 			return "apply-now";
 		}
+
 		String mensajeFlash = (cliente.getId() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
 
 		clienteService.save(cliente);
@@ -83,6 +95,23 @@ public class ClienteController {
 		flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:/thank-you";
 	}
+
+	@RequestMapping(value = "/administrador/nueva_solicitud", method = RequestMethod.POST)
+	public String guardar_adm(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
+		if (result.hasErrors()) {
+			model.addAttribute("titulo", "Formulario de Cliente");
+			return "/administrador/nueva_solicitud";
+		}
+
+		String mensajeFlash = (cliente.getId() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
+
+		clienteService.save(cliente);
+		status.setComplete();
+		flash.addFlashAttribute("success", mensajeFlash);
+		return "/administrador/admin";
+	}
+
+
 
 	@RequestMapping(value = "/administrador/eliminar/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
@@ -109,6 +138,27 @@ public class ClienteController {
 
 		return Arrays.asList("Asig. Univ. por Hijo", "Desocupado", "Empleado Publico", "Jubilado", "Pensionado",
 							"Resp. Inscripto");
+
+	}
+
+	@ModelAttribute("canal")
+	public List<String> canal(){
+
+		return Arrays.asList("FACEBOOK", "INSTAGRAM", "PAGINA WEB", "LOCAL", "FOLLETO", "OTRO");
+
+	}
+
+	@ModelAttribute("estado")
+	public List<String> estado(){
+
+		return Arrays.asList("CARGADO", "EN PROCESO", "RECHAZADO", "ANULADO", "TERMINADO", "APROBADO");
+
+	}
+
+	@ModelAttribute("financiador")
+	public List<String> financiador(){
+
+		return Arrays.asList("BANCO A", "BANCO B", "BANCO C", "BANCO D", "BANCO F");
 
 	}
 
