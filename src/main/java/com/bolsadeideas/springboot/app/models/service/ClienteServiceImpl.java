@@ -2,6 +2,7 @@ package com.bolsadeideas.springboot.app.models.service;
 
 import java.util.List;
 
+import com.bolsadeideas.springboot.app.models.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +21,6 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Cliente>) clienteDao.findAll();
 	}
 
@@ -46,13 +46,19 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Cliente findByCuil(String cuil) {
-		return clienteDao.findByCuil(cuil);
+	public Page<Cliente> findAll(Pageable pageable) {
+		return clienteDao.findAll(pageable);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Cliente> findAll(Pageable pageable) {
-		return clienteDao.findAll(pageable);
+	public Page<Cliente> findAllByVendedorIsnull(Pageable pageable) {
+		return clienteDao.findAllByVendedorIsnull(pageable);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Cliente> findAllByVendedor(String vendedor) {
+		return (List<Cliente>) clienteDao.findAllByVendedor(vendedor);
 	}
 }

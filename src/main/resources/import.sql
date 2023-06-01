@@ -15,5 +15,4 @@ insert into rol (nombre, id_usuario) VALUES ("ROLE_USER", 4)
 
 /* tabla clientes */
 
-insert into clientes (apellido, banco_cobro, celular, cuil, dependencia, domicilio, email, localidad, nombre, otro_telefono, provincia, situacion_laboral) values ("ALANIZ", "NACION", "2613438409", "20-35552198-3", "", "", "maxi.alaniz@gmail.com", "", "MAXIMILIANO", "", "MENDOZA", "EMPLEADO PUBLICO");
 

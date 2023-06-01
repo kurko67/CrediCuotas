@@ -57,7 +57,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4" th:fragment="aside">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a th:href="@{/administrador/admin}" class="brand-link">
         <img th:src="@{/back/dist/img/AdminLTELogo.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">CrediCuota - Admin </span>
     </a>
@@ -89,41 +89,35 @@
 
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/administrador/admin}" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Estadisticas
+                            Solicitudes
                         </p>
                     </a>
                 </li>
 
-
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
+                    <a th:href="@{/administrador/mis_solicitudes}" class="nav-link">
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
-                            Tareas
-                            <span class="badge badge-info right">2</span>
+                            Mis Solicitudes
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-circle nav-icon"></i>
-                        <p>Clientes</p>
+                        <p>Tareas</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-circle nav-icon"></i>
-                        <p>Solicitudes</p>
+                        <p>Estadisticas</p>
                     </a>
                 </li>
-
-
-
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

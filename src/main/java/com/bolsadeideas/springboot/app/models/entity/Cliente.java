@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -33,6 +34,7 @@ public class Cliente implements Serializable {
 	private String email;
 
 	@NotEmpty
+	@Size(min = 8, max = 11)
 	private String cuil;
 
 
@@ -72,7 +74,6 @@ public class Cliente implements Serializable {
 	@PrePersist
 	public void prePersist(){
 		createAt = new Date();
-		this.estado = "EN PROCESO";
 	}
 
 	public String getFinanciador() {
@@ -81,6 +82,7 @@ public class Cliente implements Serializable {
 
 	public void setFinanciador(String financiador) {
 		this.financiador = financiador;
+
 	}
 
 

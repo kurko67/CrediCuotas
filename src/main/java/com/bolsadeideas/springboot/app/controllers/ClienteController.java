@@ -36,13 +36,21 @@ public class ClienteController {
 		
 		Pageable pageRequest = PageRequest.of(page, 8);
 		
-		Page<Cliente> clientes = clienteService.findAll(pageRequest);
+		Page<Cliente> clientes = clienteService.findAllByVendedorIsnull(pageRequest);
 		
 		PageRender<Cliente> pageRender = new PageRender<Cliente>("/administrador/admin", clientes);
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("page", pageRender);
 		return "/administrador/admin";
+	}
+
+
+	@RequestMapping(value = "/administrador/mis_solicitudes", method = RequestMethod.GET)
+	public String misSolicitudes(Model model, @AuthenticationPrincipal User user) {
+		model.addAttribute("user", user.getUsername());
+		model.addAttribute("clientes", clienteService.findAllByVendedor(user.getUsername()));
+		return "/administrador/mis_solicitudes";
 	}
 
 	@RequestMapping(value = "/apply-now")
@@ -62,7 +70,7 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/administrador/form/{id}")
-	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
+	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
 
 		Cliente cliente = null;
 
@@ -70,15 +78,19 @@ public class ClienteController {
 			cliente = clienteService.findOne(id);
 			if (cliente == null) {
 				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
+				model.put("user", user.getUsername());
 				return "redirect:/administrador/admin";
 			}
 		} else {
 			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
+			model.put("user", user.getUsername());
 			return "/administrador/admin";
+
 		}
 		model.put("cliente", cliente);
 		model.put("titulo", "Editar Cliente");
-		return "/administrador/admin/form";
+		model.put("user", user.getUsername());
+		return "/administrador/form";
 	}
 
 	@RequestMapping(value = "/solicitud", method = RequestMethod.POST)
@@ -97,18 +109,19 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/administrador/nueva_solicitud", method = RequestMethod.POST)
-	public String guardar_adm(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
+	public String guardar_adm(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status, @AuthenticationPrincipal User user) {
 		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Formulario de Cliente");
-			return "/administrador/nueva_solicitud";
+			model.addAttribute("default_state", "EN PROCESO");
+			model.addAttribute("user", user.getUsername());
+			return "/administrador/form";
 		}
 
-		String mensajeFlash = (cliente.getId() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
+		String mensajeFlash = (cliente.getId() != null) ? "Solicitud editada con éxito!" : "Solicitud creada con éxito!";
 
 		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
-		return "/administrador/admin";
+		return "redirect:/administrador/admin";
 	}
 
 
@@ -151,14 +164,14 @@ public class ClienteController {
 	@ModelAttribute("estado")
 	public List<String> estado(){
 
-		return Arrays.asList("CARGADO", "EN PROCESO", "RECHAZADO", "ANULADO", "TERMINADO", "APROBADO");
+		return Arrays.asList("RECIBIDO","CARGADO", "EN PROCESO", "RECHAZADO", "ANULADO", "TERMINADO", "APROBADO");
 
 	}
 
 	@ModelAttribute("financiador")
 	public List<String> financiador(){
 
-		return Arrays.asList("BANCO A", "BANCO B", "BANCO C", "BANCO D", "BANCO F");
+		return Arrays.asList("SIN FINANCIADOR","BANCO A", "BANCO B", "BANCO C", "BANCO D", "BANCO F");
 
 	}
 
