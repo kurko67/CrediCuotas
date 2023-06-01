@@ -18,5 +18,17 @@ public class AdminController {
         return "administrador/admin";
     }
 
+    @RequestMapping("/administrador/estadisticas")
+    public String estadisticas(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("user", user.getUsername());
+        return "administrador/estadisticas";
+    }
+
+    @RequestMapping("/administrador/tareas")
+    public String tareas(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("user", user.getUsername());
+        return "administrador/tareas";
+    }
+
 
 }

@@ -72,7 +72,7 @@
             <div class="info">
                 <a href="#" class="d-block"><span sec:authentication="name">User login</span></a>
                 <span class="text-primary" sec:authentication="principal.authorities">Roles</span>
-                <span>
+                <span class="text-danger">
                       <form method="POST" th:action="@{/logout}">
                              <a href="#" onclick="this.parentNode.submit();">Logout</a>
                       </form>
@@ -90,7 +90,8 @@
 
                 <li class="nav-item">
                     <a th:href="@{/administrador/admin}" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+
+                        <i class="nav-icon fas fa-columns"></i>
                         <p>
                             Solicitudes
                         </p>
@@ -99,23 +100,33 @@
 
                 <li class="nav-item">
                     <a th:href="@{/administrador/mis_solicitudes}" class="nav-link">
-                        <i class="nav-icon far fa-calendar-alt"></i>
+
+                        <i class="nav-icon fas fa-table"></i>
+
                         <p>
                             Mis Solicitudes
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
+                    <a th:href="@{/administrador/tareas}" class="nav-link">
+
+                        <i class="fa nav-icon far fa-calendar-alt"></i>
                         <p>Tareas</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
+                    <a th:href="@{/administrador/estadisticas}" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>Estadisticas</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-regular fas fa-user"></i>
+                        <p>Control de usuarios</p>
                     </a>
                 </li>
             </ul>
