@@ -30,5 +30,11 @@ public class AdminController {
         return "administrador/tareas";
     }
 
+    @RequestMapping("/administrador/usuarios")
+    public String usuarios(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("user", user.getUsername());
+        return "administrador/usuarios";
+    }
+
 
 }

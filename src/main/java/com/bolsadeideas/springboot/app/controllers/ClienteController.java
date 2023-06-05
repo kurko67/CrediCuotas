@@ -93,6 +93,30 @@ public class ClienteController {
 		return "/administrador/form";
 	}
 
+	@RequestMapping(value = "/administrador/ver_mas/{id}")
+	public String ver_mas(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
+
+		Cliente cliente = null;
+
+		if (id > 0) {
+			cliente = clienteService.findOne(id);
+			if (cliente == null) {
+				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
+				model.put("user", user.getUsername());
+				return "redirect:/administrador/mis_solicitudes";
+			}
+		} else {
+			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
+			model.put("user", user.getUsername());
+			return "/administrador/mis_solicitudes";
+
+		}
+		model.put("cliente", cliente);
+		model.put("titulo", "Editar Cliente");
+		model.put("user", user.getUsername());
+		return "/administrador/ver_mas";
+	}
+
 	@RequestMapping(value = "/solicitud", method = RequestMethod.POST)
 	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
 		if (result.hasErrors()) {
@@ -100,7 +124,7 @@ public class ClienteController {
 			return "apply-now";
 		}
 
-		String mensajeFlash = (cliente.getId() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
+		String mensajeFlash = (cliente.getIdCliente() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
 
 		clienteService.save(cliente);
 		status.setComplete();
@@ -116,7 +140,7 @@ public class ClienteController {
 			return "/administrador/form";
 		}
 
-		String mensajeFlash = (cliente.getId() != null) ? "Solicitud editada con éxito!" : "Solicitud creada con éxito!";
+		String mensajeFlash = (cliente.getIdCliente() != null) ? "Solicitud editada con éxito!" : "Solicitud creada con éxito!";
 
 		clienteService.save(cliente);
 		status.setComplete();

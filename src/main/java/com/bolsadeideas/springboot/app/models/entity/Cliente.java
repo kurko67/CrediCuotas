@@ -1,7 +1,14 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -15,7 +22,7 @@ public class Cliente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idCliente;
 
 	@NotEmpty
 	private String nombre;
@@ -67,13 +74,40 @@ public class Cliente implements Serializable {
 
 	private String observacion;
 
+	//@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date createAt;
 
 	private String financiador;
 
+	private Date closedAt;
+
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //un cliente. muchas observaciones
+	@JoinColumn(name="id_cliente") // le indicamos cual es la llave foránea cuando generamos la relacion en el Schema
+	private List<Observacion> obs;
+
 	@PrePersist
 	public void prePersist(){
+
+
 		createAt = new Date();
+
+	}
+
+	public List<Observacion> getObs() {
+		return obs;
+	}
+
+	public void setObs(List<Observacion> obs) {
+		this.obs = obs;
+	}
+
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public String getFinanciador() {
@@ -85,14 +119,6 @@ public class Cliente implements Serializable {
 
 	}
 
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -242,7 +268,7 @@ public class Cliente implements Serializable {
 		this.observacion = observacion;
 	}
 
-	private static final long serialVersionUID = 1L;
+
 
 	public String getVendedor() {
 		return vendedor;
@@ -251,4 +277,15 @@ public class Cliente implements Serializable {
 	public void setVendedor(String vendedor) {
 		this.vendedor = vendedor;
 	}
+
+	public Date getClosedAt() {
+		return closedAt;
+	}
+
+	public void setClosedAt(Date closedAt) {
+		this.closedAt = closedAt;
+	}
+
+	private static final long serialVersionUID = 1L;
+
 }

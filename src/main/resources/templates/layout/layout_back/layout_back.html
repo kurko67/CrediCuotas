@@ -124,7 +124,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/administrador/usuarios}" class="nav-link">
                         <i class="fa-regular fas fa-user"></i>
                         <p>Control de usuarios</p>
                     </a>
@@ -151,15 +151,5 @@
 
 
 </footer>
-
-<aside class="control-sidebar control-sidebar-dark">
-
-</aside>
-
-
-
-
-
-
 </body>
 </html>

@@ -58,4 +58,7 @@ public class Usuario implements Serializable {
     public void setRoles(List<Rol> roles) {
         this.roles = roles;
     }
+
+    private static final long serialVersionUID = 1L;
+
 }

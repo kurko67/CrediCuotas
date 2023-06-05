@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+
+    <div class="content-wrapper py-3">
+
+        <div class="col-md-12">
+            <div>
+                <div class="alert alert-success" th:if="${success != null}" th:text="${success}">X</div>
+                <div class="alert alert-danger" th:if="${error != null}" th:text="${error}">X</div>
+                <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}">X</div>
+                <div class="alert alert-info" th:if="${info != null}" th:text="${info}">X</div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><strong>Nuevas</strong> Solicitudes</h3>
+                    <div class="card-tools">
+                        <span><a class="btn btn-primary" href="#" role="button">Crear usuario</a></span>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Usuario</th>
+                            <th>Roles</th>
+                            <th>Editar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>lucas_gambetta</td>
+                            <td>[ROLE_ADMIN]</td>
+                            <td>Editar</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center p-2">
+                    <span>No se encontraron nuevas solicitudes</span>
+                </div>
+                <div class="card-footer">
+                  Card footer
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
+</body>
+</html>
