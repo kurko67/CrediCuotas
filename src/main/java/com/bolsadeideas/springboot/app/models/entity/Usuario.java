@@ -3,6 +3,7 @@ package com.bolsadeideas.springboot.app.models.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,13 +20,21 @@ public class Usuario implements Serializable {
     @NotEmpty
     private String password;
 
+    @OneToMany(mappedBy ="cliente",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Tarea> itemTareas;
+
+
     //Esto es para hacer la relacion UNO a MUCHOS es la Schema de tabla Test UN usuario puede tener MUCHOS roles
     @OneToMany
     // le indicamos cual es la llave foránea cuando generamos la relacion en el Schema
     @JoinColumn(name="id_usuario")
-
     //Lista de roles que acepta el usuario
     private List<Rol> roles;
+
+    //constructor empty
+    public Usuario(){
+        itemTareas = new ArrayList<Tarea>();
+    }
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -57,6 +66,18 @@ public class Usuario implements Serializable {
 
     public void setRoles(List<Rol> roles) {
         this.roles = roles;
+    }
+
+    public List<Tarea> getItemTareas() {
+        return itemTareas;
+    }
+
+    public void setItemTareas(List<Tarea> itemTareas) {
+        this.itemTareas = itemTareas;
+    }
+
+    public void addItemTarea(Tarea ItemTareas){
+        itemTareas.add(ItemTareas);
     }
 
     private static final long serialVersionUID = 1L;

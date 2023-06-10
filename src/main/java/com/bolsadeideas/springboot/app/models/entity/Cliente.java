@@ -87,10 +87,14 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy ="cliente",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Observacion> itemObservacion;
 
+	@OneToMany(mappedBy ="cliente",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Tarea> itemTareas;
+
 
 	public Cliente(){
 
 		itemObservacion = new ArrayList<Observacion>();
+		itemTareas = new ArrayList<Tarea>();
 
 	}
 
@@ -113,6 +117,17 @@ public class Cliente implements Serializable {
 		itemObservacion.add(ItemObservaciones);
 	}
 
+	public List<Tarea> getItemTareas() {
+		return itemTareas;
+	}
+
+	public void setItemTareas(List<Tarea> itemTareas) {
+		this.itemTareas = itemTareas;
+	}
+
+	public void addItemTarea(Tarea ItemTareas){
+		itemTareas.add(ItemTareas);
+	}
 	public Long getIdCliente() {
 		return idCliente;
 	}
