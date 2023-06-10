@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-
 <head th:replace="layout/layout_back/layout_back :: head"></head>
 
 <body>
@@ -66,7 +65,7 @@
                         <span>No se encontraron nuevas solicitudes</span>
                     </div>
                 <div class="card-footer">
-                    <nav th:replace="/administrador/paginator-nav :: paginator"></nav>
+                    <nav th:replace="administrador/paginator-nav :: paginator"></nav>
                 </div>
             </div>
             </div>

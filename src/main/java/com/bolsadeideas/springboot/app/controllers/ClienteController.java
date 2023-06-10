@@ -31,7 +31,7 @@ public class ClienteController {
 	@Autowired
 	private IClienteService clienteService;
 
-	@RequestMapping(value = "/administrador/admin", method = RequestMethod.GET)
+	@RequestMapping(value = "administrador/admin")
 	public String listar(@RequestParam(name="page", defaultValue="0") int page, Model model) {
 		
 		Pageable pageRequest = PageRequest.of(page, 8);
@@ -42,15 +42,15 @@ public class ClienteController {
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("page", pageRender);
-		return "/administrador/admin";
+		return "administrador/admin";
 	}
 
 
-	@RequestMapping(value = "/administrador/mis_solicitudes", method = RequestMethod.GET)
+	@RequestMapping(value = "administrador/mis_solicitudes")
 	public String misSolicitudes(Model model, @AuthenticationPrincipal User user) {
 		model.addAttribute("user", user.getUsername());
 		model.addAttribute("clientes", clienteService.findAllByVendedor(user.getUsername()));
-		return "/administrador/mis_solicitudes";
+		return "administrador/mis_solicitudes";
 	}
 
 	@RequestMapping(value = "/apply-now")
@@ -60,16 +60,16 @@ public class ClienteController {
 		return "apply-now";
 	}
 
-	@RequestMapping(value = "/administrador/form")
+	@RequestMapping(value = "administrador/form")
 	public String crear_nuevo_cliente(Map<String, Object> model, @AuthenticationPrincipal User user) {
 		String usuario = user.getUsername();
 		Cliente cliente = new Cliente();
 		model.put("cliente", cliente);
 		model.put("user", usuario);
-		return "/administrador/form";
+		return "administrador/form";
 	}
 
-	@RequestMapping(value = "/administrador/form/{id}")
+	@RequestMapping(value = "administrador/form/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
 
 		Cliente cliente = null;
@@ -79,21 +79,21 @@ public class ClienteController {
 			if (cliente == null) {
 				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
 				model.put("user", user.getUsername());
-				return "redirect:/administrador/admin";
+				return "redirect:administrador/admin";
 			}
 		} else {
 			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
 			model.put("user", user.getUsername());
-			return "/administrador/admin";
+			return "administrador/admin";
 
 		}
 		model.put("cliente", cliente);
 		model.put("titulo", "Editar Cliente");
 		model.put("user", user.getUsername());
-		return "/administrador/form";
+		return "administrador/form";
 	}
 
-	@RequestMapping(value = "/administrador/ver_mas/{id}")
+	@RequestMapping(value = "administrador/ver_mas/{id}")
 	public String ver_mas(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
 
 		Cliente cliente = null;
@@ -108,16 +108,16 @@ public class ClienteController {
 		} else {
 			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
 			model.put("user", user.getUsername());
-			return "/administrador/mis_solicitudes";
+			return "administrador/mis_solicitudes";
 
 		}
 		model.put("cliente", cliente);
 		model.put("titulo", "Editar Cliente");
 		model.put("user", user.getUsername());
-		return "/administrador/ver_mas";
+		return "administrador/ver_mas";
 	}
 
-	@RequestMapping(value = "/solicitud", method = RequestMethod.POST)
+	@RequestMapping(value = "/solicitud")
 	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status) {
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Cliente");
@@ -132,7 +132,7 @@ public class ClienteController {
 		return "redirect:/thank-you";
 	}
 
-	@RequestMapping(value = "/administrador/nueva_solicitud", method = RequestMethod.POST)
+	@RequestMapping(value = "/administrador/nueva_solicitud")
 	public String guardar_adm(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status, @AuthenticationPrincipal User user) {
 		if (result.hasErrors()) {
 			model.addAttribute("default_state", "EN PROCESO");
@@ -145,7 +145,7 @@ public class ClienteController {
 		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
-		return "redirect:/administrador/admin";
+		return "redirect:/administrador/mis_solicitudes";
 	}
 
 

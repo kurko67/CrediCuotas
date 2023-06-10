@@ -57,7 +57,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4" th:fragment="aside">
     <!-- Brand Logo -->
-    <a th:href="@{/administrador/admin}" class="brand-link">
+    <a th:href="@{administrador/admin}" class="brand-link">
         <img th:src="@{/back/dist/img/AdminLTELogo.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">CrediCuota - Admin </span>
     </a>
@@ -117,7 +117,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a th:href="@{/administrador/estadisticas}" class="nav-link">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/administrador/estadisticas}" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>Estadisticas</p>
                     </a>

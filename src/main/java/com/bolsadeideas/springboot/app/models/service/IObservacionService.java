@@ -9,8 +9,6 @@ import java.util.List;
 public interface IObservacionService {
 
 
-
-
     public List<Observacion> findByIdCliente(Long id_cliente);
 
     public void save(Observacion observacion);

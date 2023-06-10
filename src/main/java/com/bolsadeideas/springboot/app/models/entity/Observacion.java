@@ -9,7 +9,7 @@ import java.util.Date;
 @Table(name = "observaciones")
 public class Observacion implements Serializable {
 
-
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idObservacion;
@@ -19,12 +19,18 @@ public class Observacion implements Serializable {
     @NotEmpty
     private String comentario;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cliente cliente;
+
+    public Observacion() {
+
+    }
+
     @PrePersist
     public void PrePersist(){
 
         this.createdAt = new Date();
     }
-
 
     public Long getIdObservacion() {
         return idObservacion;
@@ -50,7 +56,11 @@ public class Observacion implements Serializable {
         this.comentario = comentario;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-    private static final long serialVersionUID = 1L;
-
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

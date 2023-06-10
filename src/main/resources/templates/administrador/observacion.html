@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html  lang="es" xmlns:th="http://www.thymeleaf.org"
+	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+	<div class="content-wrapper py-3">
+
+		<div class="container-fluid">
+			<div class="row">
+
+			<div class="col-md-12">
+
+				<div class="card card-primary">
+					<div class="card-header">
+						<h3 class="card-title">Crear Observación</h3>
+					</div>
+					<form th:action="@{/administrador/observacion}" th:object="${observacion}" method="post">
+						<div class="card-body">
+
+
+
+								<div class="row list-input">
+									<div class="col-md-3 mr0">
+										<div class="form-group">
+											<input type="text" th:value="${observacion.cliente.nombre} + ' ' + ${observacion.cliente.apellido}" class="form-control" disabled='disabled' name="idcliente"/>
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<div class="form-group">
+											<input type="text" th:field="*{comentario}" class="form-control"
+												   th:errorclass="'form-control alert-danger'" placeholder="comentario/observacion"/> <small
+												class="form-text text-danger"
+												th:if="${#fields.hasErrors('comentario')}" th:errors="*{comentario}"></small>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="card-footer">
+							<input type="submit" value="Guardar" class="button btn btn-primary btn-lg" />
+						</div>
+					</form>
+				</div>
+
+</section>
+
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+</body>
+</html>

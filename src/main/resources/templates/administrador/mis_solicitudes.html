@@ -23,14 +23,14 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><strong>Nuevas</strong> Solicitudes</h3>
+                        <h3 class="card-title"><strong>Mis</strong> Solicitudes</h3>
                         <div class="card-tools">
                             <a th:href="@{/administrador/form}" class="btn btn-primary">Nueva Solicitud</a>
                         </div>
                     </div>
                     <div class="card-body">
                 <div th:if="${clientes != null and !clientes.empty}" class="card-body p-0">
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                         <tr>
                             <th>id</th>

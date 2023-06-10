@@ -7,6 +7,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -82,24 +84,33 @@ public class Cliente implements Serializable {
 	private Date closedAt;
 
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //un cliente. muchas observaciones
-	@JoinColumn(name="id_cliente") // le indicamos cual es la llave foránea cuando generamos la relacion en el Schema
-	private List<Observacion> obs;
+	@OneToMany(mappedBy ="cliente",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Observacion> itemObservacion;
+
+
+	public Cliente(){
+
+		itemObservacion = new ArrayList<Observacion>();
+
+	}
+
 
 	@PrePersist
 	public void prePersist(){
 
-
 		createAt = new Date();
-
 	}
 
-	public List<Observacion> getObs() {
-		return obs;
+	public List<Observacion> getItemObservacion() {
+		return itemObservacion;
 	}
 
-	public void setObs(List<Observacion> obs) {
-		this.obs = obs;
+	public void setItemObservacion(List<Observacion> itemObservacion) {
+		this.itemObservacion = itemObservacion;
+	}
+
+	public void addItemObservacion(Observacion ItemObservaciones){
+		itemObservacion.add(ItemObservaciones);
 	}
 
 	public Long getIdCliente() {
@@ -116,9 +127,7 @@ public class Cliente implements Serializable {
 
 	public void setFinanciador(String financiador) {
 		this.financiador = financiador;
-
 	}
-
 
 	public String getNombre() {
 		return nombre;
@@ -268,8 +277,6 @@ public class Cliente implements Serializable {
 		this.observacion = observacion;
 	}
 
-
-
 	public String getVendedor() {
 		return vendedor;
 	}
@@ -285,6 +292,8 @@ public class Cliente implements Serializable {
 	public void setClosedAt(Date closedAt) {
 		this.closedAt = closedAt;
 	}
+
+
 
 	private static final long serialVersionUID = 1L;
 
