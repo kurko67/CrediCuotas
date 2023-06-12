@@ -1,9 +1,14 @@
 package com.bolsadeideas.springboot.app.controllers;
 
+import com.bolsadeideas.springboot.app.models.dao.IUsuarioDao;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
 import com.bolsadeideas.springboot.app.models.entity.Observacion;
+import com.bolsadeideas.springboot.app.models.entity.Tarea;
+import com.bolsadeideas.springboot.app.models.entity.Usuario;
 import com.bolsadeideas.springboot.app.models.service.IClienteService;
 import com.bolsadeideas.springboot.app.models.service.IObservacionService;
+import com.bolsadeideas.springboot.app.models.service.ITareaService;
+import com.bolsadeideas.springboot.app.models.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 
 @Controller
@@ -27,6 +33,11 @@ public class AdminController {
 
     @Autowired
     private IObservacionService observacionService;
+
+    @Autowired
+    private IUsuarioDao usuarioDao;
+
+
 
     @RequestMapping("/administrador")
     public String index_admin(Model model, @AuthenticationPrincipal User user) {
@@ -85,6 +96,7 @@ public class AdminController {
         return "redirect:/administrador/ver_mas/" + observacion.getCliente().getIdCliente();
 
     }
+
 
 
 

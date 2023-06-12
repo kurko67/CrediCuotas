@@ -10,30 +10,22 @@
 <nav th:replace="layout/layout_back/layout_back :: aside"></nav>
 
 <section>
-
 	<div class="content-wrapper py-3">
-
 		<div class="container-fluid">
 			<div class="row">
-
 			<div class="col-md-12">
-
 				<div class="card card-primary">
 					<div class="card-header">
 						<h3 class="card-title">Crear Observación</h3>
 					</div>
 					<form th:action="@{/administrador/observacion}" th:object="${observacion}" method="post">
 						<div class="card-body">
-
-
-
 								<div class="row list-input">
 									<div class="col-md-3 mr0">
 										<div class="form-group">
 											<input type="text" th:value="${observacion.cliente.nombre} + ' ' + ${observacion.cliente.apellido}" class="form-control" disabled='disabled' name="idcliente"/>
 										</div>
 									</div>
-
 									<div class="col-md-3">
 										<div class="form-group">
 											<input type="text" th:field="*{comentario}" class="form-control"

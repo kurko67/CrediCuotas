@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<html  lang="es" xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="layout/layout_back/layout_back :: head"></head>
-
 <body>
 
 <nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
@@ -11,145 +11,49 @@
 
 <section>
 
-
     <div class="content-wrapper py-3">
 
-        <!-- TO DO List -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">
-                    <i class="ion ion-clipboard mr-1"></i>
-                    Lista de tareas
-                </h3>
+        <div class="container-fluid">
+            <div class="row">
 
-                <div class="card-tools">
-                    <ul class="pagination pagination-sm">
-                        <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-                <ul class="todo-list" data-widget="todo-list">
-                    <li>
-                        <!-- drag handle -->
-                        <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                        <!-- checkbox -->
-                        <div  class="icheck-primary d-inline ml-2">
-                            <input type="checkbox" value="" name="todo1" id="todoCheck1">
-                            <label for="todoCheck1"></label>
-                        </div>
-                        <!-- todo text -->
-                        <span class="text">Llamar a Carlos - DNI 12345678</span>
-                        <!-- Emphasis label -->
-                        <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
-                        <!-- General tools such as edit or delete-->
-                        <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
-                        </div>
-                    </li>
-                    <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                        <div  class="icheck-primary d-inline ml-2">
-                            <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
-                            <label for="todoCheck2"></label>
-                        </div>
-                        <span class="text">Firmar papeles de Juan Pepito - CUIL 2012346783</span>
-                        <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
-                        <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
-                        </div>
-                    </li>
-                    <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                        <div  class="icheck-primary d-inline ml-2">
-                            <input type="checkbox" value="" name="todo3" id="todoCheck3">
-                            <label for="todoCheck3"></label>
-                        </div>
-                        <span class="text">Reunion con Lucas 9 hs 01/06/2023</span>
-                        <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
-                        <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
-                        </div>
-                    </li>
-                    <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                        <div  class="icheck-primary d-inline ml-2">
-                            <input type="checkbox" value="" name="todo4" id="todoCheck4">
-                            <label for="todoCheck4"></label>
-                        </div>
-                        <span class="text">Contestar email de Juan Pepito</span>
-                        <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
-                        <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
-                        </div>
-                    </li>
-                    <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                        <div  class="icheck-primary d-inline ml-2">
-                            <input type="checkbox" value="" name="todo5" id="todoCheck5">
-                            <label for="todoCheck5"></label>
-                        </div>
-                        <span class="text">Comunicarse con financiador C</span>
-                        <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
-                        <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
-                        </div>
-                    </li>
-                    <li>
-                    <span class="handle">
-                      <i class="fas fa-ellipsis-v"></i>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </span>
-                        <div  class="icheck-primary d-inline ml-2">
-                            <input type="checkbox" value="" name="todo6" id="todoCheck6">
-                            <label for="todoCheck6"></label>
-                        </div>
-                        <span class="text">Reunion a las 20 hs con Client x</span>
-                        <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
-                        <div class="tools">
-                            <i class="fas fa-edit"></i>
-                            <i class="fas fa-trash-o"></i>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-                <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
-            </div>
-        </div>
+                <div class="col-md-12">
 
-
-    </div>
-
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Crear Tarea</h3>
+                        </div>
+                        <form th:action="@{/administrador/tareas}" th:object="${tarea}" method="post">
+                            <div class="card-body">
+                                <div class="row list-input">
+                                    <div class="col-md-3 mr0">
+                                        <div class="form-group">
+                                            <input type="text" th:value="${tarea.cliente.nombre} + ' ' + ${tarea.cliente.apellido}" class="form-control" disabled='disabled' name="cliente"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="date" th:field="*{fechaTarea}" class="form-control"
+                                                   th:errorclass="'form-control alert-danger'"/> <small
+                                                class="form-text text-danger"
+                                                th:if="${#fields.hasErrors('fechaTarea')}" th:errors="*{fechaTarea}"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" th:field="*{comentario}" class="form-control"
+                                                   th:errorclass="'form-control alert-danger'" placeholder="comentario/observacion"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <input type="submit" value="Guardar" class="button btn btn-primary btn-lg" />
+                            </div>
+                        </form>
+                    </div>
 </section>
 
-<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
 
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
 </body>
 </html>

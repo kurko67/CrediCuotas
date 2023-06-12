@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+
+    <div class="content-wrapper py-3">
+
+            <div class="col-md-12">
+                <div>
+                    <div class="alert alert-success" th:if="${success != null}" th:text="${success}">X</div>
+                    <div class="alert alert-danger" th:if="${error != null}" th:text="${error}">X</div>
+                    <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}">X</div>
+                    <div class="alert alert-info" th:if="${info != null}" th:text="${info}">X</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><strong>Mis</strong> Tareas</h3>
+                        <div class="card-tools">
+                            <a th:href="@{/administrador/form}" class="btn btn-primary">Nueva tarea</a>
+                            <a th:href="@{/administrador/form}" class="btn btn-primary">Ver Abiertas</a>
+                            <a th:href="@{/administrador/form}" class="btn btn-primary">Ver Cerradas</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                <div th:if="${tareas != null and !tareas.empty}" class="card-body p-0">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Cliente</th>
+                            <th>Fh Creacion</th>
+                            <th>Fh Tarea</th>
+                            <th>Estado</th>
+                            <th>Comentario</th>
+                            <th>Ver +</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="tarea: ${tareas}">
+                            <td th:text="${tarea.idTarea}"></td>
+                            <td th:text="${tarea.cliente.nombre}"></td>
+                            <td th:text="${tarea.createdAt}"></td>
+                            <td th:text="${tarea.fechaTarea}"></td>
+                            <td th:text="${tarea.estado}"></td>
+                            <td th:text="${tarea.comentario}"></td>
+                            <td><a class="btn btn-info btn-sm"
+                                   th:text="'Ver +'"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="text-center p-2" th:if="${tareas == null or tareas.empty}">
+                        <span>Usted no posee tareas asignadas</span>
+                    </div>
+
+                    </div>
+
+            </div>
+            </div>
+
+            </div>
+
+
+
+    </div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
+</body>
+</html>

@@ -87,6 +87,7 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy ="cliente",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Observacion> itemObservacion;
 
+
 	@OneToMany(mappedBy ="cliente",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Tarea> itemTareas;
 

@@ -8,9 +8,11 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public class ITareaService {
+public interface ITareaService {
 
     public List<Tarea> findAll();
+
+    public List<Tarea> findAllByUsernameOrderByDesc(Long iduser);
 
     public Page<Tarea> findAll(Pageable pageable);
 

@@ -1,6 +1,11 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -24,17 +29,29 @@ public class Tarea implements Serializable {
 
     private Date updateAt;
 
-    private Date fecha_tarea;
+    @NotNull
+    @Future
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaTarea;
+
+    private Date fechaCierre;
 
     private String estado;
 
+    @NotEmpty
     private String comentario;
 
+    //contructor empy
+
+    public Tarea(){
+
+    }
 
     @PrePersist
     public void prePersis(){
 
         this.createdAt = new Date();
+        this.estado = "ABIERTO";
 
     }
 
@@ -46,6 +63,8 @@ public class Tarea implements Serializable {
         this.idTarea = idTarea;
     }
 
+
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -54,13 +73,17 @@ public class Tarea implements Serializable {
         this.cliente = cliente;
     }
 
+
     public Usuario getUsername() {
-        return username;
+       return username;
     }
+
 
     public void setUsername(Usuario username) {
         this.username = username;
     }
+
+
 
     public Date getCreatedAt() {
         return createdAt;
@@ -78,12 +101,20 @@ public class Tarea implements Serializable {
         this.updateAt = updateAt;
     }
 
-    public Date getFecha_tarea() {
-        return fecha_tarea;
+    public Date getFechaTarea() {
+        return fechaTarea;
     }
 
-    public void setFecha_tarea(Date fecha_tarea) {
-        this.fecha_tarea = fecha_tarea;
+    public void setFechaTarea(Date fechaTarea) {
+        this.fechaTarea = fechaTarea;
+    }
+
+    public Date getFechaCierre() {
+        return fechaCierre;
+    }
+
+    public void setFechaCierre(Date fechaCierre) {
+        this.fechaCierre = fechaCierre;
     }
 
     public String getEstado() {
@@ -101,4 +132,6 @@ public class Tarea implements Serializable {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+
+
 }
