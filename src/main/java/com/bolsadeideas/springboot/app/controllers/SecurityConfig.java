@@ -42,9 +42,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .defaultSuccessUrl("/administrador/admin")
                 .failureUrl("/login?error=true")
                 .and()
                 .exceptionHandling().accessDeniedPage("/error/403");
+
     }
 
 

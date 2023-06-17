@@ -12,4 +12,5 @@ public interface ITareaDao extends JpaRepository<Tarea, Long> {
 
 
 
+
 }

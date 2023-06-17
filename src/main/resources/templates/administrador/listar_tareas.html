@@ -41,20 +41,20 @@
                             <th>Fh Tarea</th>
                             <th>Estado</th>
                             <th>Comentario</th>
-                            <th>Ver +</th>
+                            <th>Acciones</th>
 
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="tarea: ${tareas}">
                             <td th:text="${tarea.idTarea}"></td>
-                            <td th:text="${tarea.cliente.nombre}"></td>
+                            <td th:text="${tarea.cliente.nombre} + ' ' + ${tarea.cliente.apellido}"></td>
                             <td th:text="${tarea.createdAt}"></td>
                             <td th:text="${tarea.fechaTarea}"></td>
-                            <td th:text="${tarea.estado}"></td>
+                            <td th:text="${tarea.estado}"></span></td>
                             <td th:text="${tarea.comentario}"></td>
                             <td><a class="btn btn-info btn-sm"
-                                   th:text="'Ver +'"></a></td>
+                                   th:text="'VER '" th:href="@{/administrador/ver_tarea/} + ${tarea.idTarea}"></a></td>
                         </tr>
                         </tbody>
                     </table>

@@ -82,11 +82,13 @@ public class ClienteController {
 				return "redirect:administrador/admin";
 			}
 		} else {
+
 			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
 			model.put("user", user.getUsername());
 			return "administrador/admin";
 
 		}
+
 		model.put("cliente", cliente);
 		model.put("titulo", "Editar Cliente");
 		model.put("user", user.getUsername());
