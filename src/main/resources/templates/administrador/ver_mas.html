@@ -220,14 +220,14 @@
 							<h4>Tareas</h4>
 							<thead>
 							<tr>
-								<th>Fecha</th>
+								<th>Fecha Tarea</th>
 								<th>Comentario</th>
 								<th>Estado</th>
 							</tr>
 							</thead>
 							<tbody>
 							<tr th:each="tareas: ${cliente.itemTareas}">
-								<td th:text="${tareas.createdAt}"></td>
+								<td th:text="${tareas.fechaTarea}"></td>
 								<td th:text="${tareas.comentario}"></td>
 								<td th:text="${tareas.estado}"></td>
 							</tr>

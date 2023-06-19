@@ -99,24 +99,41 @@ public class ClienteController {
 	public String ver_mas(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
 
 		Cliente cliente = null;
+		cliente = clienteService.findOne(id);
 
-		if (id > 0) {
-			cliente = clienteService.findOne(id);
-			if (cliente == null) {
-				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
+		if (cliente == null){
+			flash.addFlashAttribute("error", "El cliente o solicitud no existe");
+			model.put("user", user.getUsername());
+			return "redirect:/administrador/mis_solicitudes";
+		}else{
+
+			if(!cliente.getVendedor().equals(user.getUsername())){
+				flash.addFlashAttribute("info", "La solicitud que intentar ver pertenece a otro usuario");
 				model.put("user", user.getUsername());
 				return "redirect:/administrador/mis_solicitudes";
+			}else{
+				if (id > 0) {
+
+					if (cliente == null) {
+						flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
+						model.put("user", user.getUsername());
+						return "redirect:/administrador/mis_solicitudes";
+					}
+				} else {
+					flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
+					model.put("user", user.getUsername());
+					return "administrador/mis_solicitudes";
+
+				}
+				model.put("cliente", cliente);
+				model.put("titulo", "Editar Cliente");
+				model.put("user", user.getUsername());
+				return "administrador/ver_mas";
 			}
-		} else {
-			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
-			model.put("user", user.getUsername());
-			return "administrador/mis_solicitudes";
 
 		}
-		model.put("cliente", cliente);
-		model.put("titulo", "Editar Cliente");
-		model.put("user", user.getUsername());
-		return "administrador/ver_mas";
+
+
 	}
 
 	@RequestMapping(value = "/solicitud")

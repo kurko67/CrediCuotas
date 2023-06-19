@@ -45,7 +45,6 @@ public class WebConfig implements WebMvcConfigurer{
         registro.addViewController("/error/404").setViewName("/error/404");
 
 
-
     }
 
 }

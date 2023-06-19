@@ -14,6 +14,8 @@ public interface ITareaService {
 
     public List<Tarea> findAllByUsernameOrderByDesc(Long iduser);
 
+    public List<Tarea> findAllByUsernameEstadoCerrado(Long iduser);
+
     public Page<Tarea> findAll(Pageable pageable);
 
     public void save(Tarea tarea);
@@ -21,6 +23,7 @@ public interface ITareaService {
     public Tarea findOne(Long id);
 
     public void delete(Long id);
+
 
 
 

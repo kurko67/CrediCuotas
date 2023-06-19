@@ -22,7 +22,7 @@
 					<div class="card-header">
 						<h3 class="card-title">Información de Tarea N° <span th:text="${tarea.idTarea} + ' - Estado: ' + ${tarea.estado} + ' - para el dia ' + ${tarea.fechaTarea} "></span></h3>
 						<div class="card-tools">
-							<span><a class="btn btn-dark" th:href="@{/administrador/cerrar_tarea/} + ${tarea.idTarea}" role="button">Cerrar tarea</a></span>
+
 						</div>
 					</div>
 						<div class="card-body">
@@ -64,10 +64,14 @@
 								</div>
 						</div>
 						</div>
+
+				</div>
+
+				<div th:if="${tarea.estado == 'ABIERTO'}" class="card-footer">
+					<span><a class="button btn btn-danger btn-lg" th:href="@{/administrador/cerrar_tarea/} + ${tarea.idTarea}" role="button">Cerrar tarea</a></span>
 				</div>
 
 </section>
-
 
 <footer th:replace="layout/layout_back/layout_back :: footer"></footer>
 </body>

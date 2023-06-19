@@ -11,10 +11,10 @@ import java.util.List;
 
 public interface IClienteDao extends PagingAndSortingRepository<Cliente, Long>{
 
-     @Query("select u from Cliente u where u.vendedor = ?1")
+     @Query("select u from Cliente u where u.vendedor = ?1 order by u.idCliente desc")
      List<Cliente> findAllByVendedor(String vendedor);
 
-     @Query("select u from Cliente u where u.vendedor = null")
+     @Query("select u from Cliente u where u.vendedor = null order by u.idCliente desc")
      Page<Cliente> findAllByVendedorIsnull(Pageable pageable);
 
 }

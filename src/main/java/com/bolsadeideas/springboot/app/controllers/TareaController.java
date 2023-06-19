@@ -78,31 +78,66 @@ public class TareaController {
         return "administrador/listar_tareas";
     }
 
+    @RequestMapping(value = "administrador/listar_tareas_cerradas")
+    public String listaDeTareasCerradas(Model model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
+
+        Usuario usuario = usuarioDao.findByUsername(user.getUsername());
+
+        model.addAttribute("user", user.getUsername());
+        model.addAttribute("tareas", tareaService.findAllByUsernameEstadoCerrado(usuario.getIdUsuario()));
+        return "administrador/listar_tareas";
+    }
+
     @RequestMapping(value = "administrador/ver_tarea/{id}")
     public String ver_mas(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
 
         Tarea tarea = null;
+        tarea = tareaService.findOne(id);
 
-        if (id > 0) {
+        if(tarea == null){
 
-            tarea = tareaService.findOne(id);
-
-            if (tarea == null) {
-                flash.addFlashAttribute("error", "Tarea no existe");
-                model.put("user", user.getUsername());
-                return "redirect:/administrador/listar_tareas";
-            }
-
-        } else {
             flash.addFlashAttribute("error", "Tarea no existe");
             model.put("user", user.getUsername());
-            return "administrador/listar_tareas";
+            return "redirect:/administrador/listar_tareas";
+
+        }else{
+
+            if(!tarea.getUsername().getUsername().equals(user.getUsername())){
+                // usuario de tarea distinto al logueado
+                flash.addFlashAttribute("info", "La tarea que intentas ver pertenece a otro usuario");
+                model.put("user", user.getUsername());
+                return "redirect:/administrador/listar_tareas";
+
+            }else{
+
+                if (id > 0) {
+
+                    if (tarea == null) {
+
+                        flash.addFlashAttribute("error", "Tarea no existe");
+                        model.put("user", user.getUsername());
+                        return "redirect:/administrador/listar_tareas";
+
+                    }else{
+
+                        model.put("tarea", tarea);
+                        model.put("user", user.getUsername());
+                        return "administrador/ver_tarea";
+
+                    }
+
+                } else {
+                    flash.addFlashAttribute("error", "Tarea no existe");
+                    model.put("user", user.getUsername());
+                    return "administrador/listar_tareas";
+                }
+
+            }
+
 
         }
 
-        model.put("tarea", tarea);
-        model.put("user", user.getUsername());
-        return "administrador/ver_tarea";
+
 
     }
 
