@@ -10,7 +10,6 @@ insert into usuario (password, username) VALUE ("$2a$10$561esWd5wPWJ.8ocbqMJnuZ4
 insert into rol (nombre, id_usuario) VALUES ("ROLE_ADMIN", 1);
 insert into rol (nombre, id_usuario) VALUES ("ROLE_ADMIN", 2);
 insert into rol (nombre, id_usuario) VALUES ("ROLE_ADMIN", 3);
-insert into rol (nombre, id_usuario) VALUES ("ROLE_USER", 3);
 insert into rol (nombre, id_usuario) VALUES ("ROLE_USER", 4);
 
 /* tabla clientes */

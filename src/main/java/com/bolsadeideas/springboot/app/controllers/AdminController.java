@@ -57,12 +57,6 @@ public class AdminController {
         return "administrador/tareas";
     }
 
-    @RequestMapping("/administrador/usuarios")
-    public String usuarios(Model model, @AuthenticationPrincipal User user) {
-        model.addAttribute("user", user.getUsername());
-        return "administrador/usuarios";
-    }
-
     @GetMapping("administrador/observacion/{idcliente}")
     public String crear_observacion(@PathVariable(value = "idcliente") Long idcliente,Model model, RedirectAttributes flash){
 

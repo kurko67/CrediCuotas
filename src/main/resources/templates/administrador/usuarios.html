@@ -21,9 +21,10 @@
                 <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}">X</div>
                 <div class="alert alert-info" th:if="${info != null}" th:text="${info}">X</div>
             </div>
+
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><strong>Nuevas</strong> Solicitudes</h3>
+                    <h3 class="card-title">Lista de<strong> Usuarios </strong></h3>
                     <div class="card-tools">
                         <span><a class="btn btn-primary" href="#" role="button">Crear usuario</a></span>
                     </div>
@@ -34,25 +35,24 @@
                         <tr>
                             <th>id</th>
                             <th>Usuario</th>
-                            <th>Roles</th>
-                            <th>Editar</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>lucas_gambetta</td>
-                            <td>[ROLE_ADMIN]</td>
-                            <td>Editar</td>
+                        <tr th:each="users: ${lista_users}">
+                            <td th:text="${users.idUsuario}"></td>
+                            <td th:text="${users.username}"></td>
+                            <td th:each=" roles: ${users.roles}">
+                                <span th:text="${roles.nombre}"></span>
+                            </td>
+                            <td><a class="btn btn-primary btn-xs" th:href="@{administrador/editar_usuario/} + ${users.idUsuario}">Editar</a></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="text-center p-2">
-                    <span>No se encontraron nuevas solicitudes</span>
-                </div>
                 <div class="card-footer">
-                  Card footer
+                 <!-- paginador aqui -->
                 </div>
             </div>
         </div>

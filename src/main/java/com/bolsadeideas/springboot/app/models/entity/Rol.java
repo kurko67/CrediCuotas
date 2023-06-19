@@ -18,7 +18,6 @@ public class Rol implements Serializable {
     private String nombre;
 
 
-
     public Long getIdRol() {
         return idRol;
     }
