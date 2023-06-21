@@ -68,7 +68,8 @@
 				</div>
 
 				<div th:if="${tarea.estado == 'ABIERTO'}" class="card-footer">
-					<span><a class="button btn btn-danger btn-lg" th:href="@{/administrador/cerrar_tarea/} + ${tarea.idTarea}" role="button">Cerrar tarea</a></span>
+					<span><a class="button btn btn-danger btn-lg" th:href="@{/administrador/cerrar_tarea/} + ${tarea.idTarea}" role="button"
+							 onclick="return confirm('Est�s seguro que quieres cerrar la tarea?');">Cerrar tarea</a></span>
 				</div>
 
 </section>

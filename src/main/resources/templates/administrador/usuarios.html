@@ -46,7 +46,7 @@
                             <td th:each=" roles: ${users.roles}">
                                 <span th:text="${roles.nombre}"></span>
                             </td>
-                            <td><a class="btn btn-primary btn-xs" th:href="@{administrador/editar_usuario/} + ${users.idUsuario}">Editar</a></td>
+                            <td><a class="btn btn-info btn-xs" th:href="@{/administrador/editar_usuario/} + ${users.idUsuario}">Editar</a></td>
                         </tr>
                         </tbody>
                     </table>

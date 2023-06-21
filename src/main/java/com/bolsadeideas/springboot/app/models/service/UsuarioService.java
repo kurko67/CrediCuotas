@@ -42,4 +42,9 @@ public class UsuarioService implements UserDetailsService {
         return new User(usuario.getUsername(), usuario.getPassword(), roles);
 
     }
+
+    public void UpdatePassword(String password, Long idsuario){
+        usuarioDao.UpdatePassword(password, idsuario);
+    }
+
 }
