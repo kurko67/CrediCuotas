@@ -12,7 +12,7 @@ public interface ITareaService {
 
     public List<Tarea> findAll();
 
-    public List<Tarea> findAllByUsernameOrderByDesc(Long iduser);
+    public Page<Tarea> findAllByUsernameOrderByDesc(Long iduser, Pageable pageable);
 
     public List<Tarea> findAllByUsernameEstadoCerrado(Long iduser);
 

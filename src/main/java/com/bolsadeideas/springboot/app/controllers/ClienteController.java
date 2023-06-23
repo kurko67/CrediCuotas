@@ -32,24 +32,32 @@ public class ClienteController {
 	private IClienteService clienteService;
 
 	@RequestMapping(value = "administrador/admin")
-	public String listar(@RequestParam(name="page", defaultValue="0") int page, Model model) {
+	public String listar(@RequestParam(name="page", defaultValue="0") int page, Model model, @AuthenticationPrincipal User user) {
 		
 		Pageable pageRequest = PageRequest.of(page, 8);
-		
 		Page<Cliente> clientes = clienteService.findAllByVendedorIsnull(pageRequest);
 		
 		PageRender<Cliente> pageRender = new PageRender<Cliente>("/administrador/admin", clientes);
-		model.addAttribute("titulo", "Listado de clientes");
+
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("page", pageRender);
+		model.addAttribute("user", user.getUsername());
 		return "administrador/admin";
 	}
 
 
 	@RequestMapping(value = "administrador/mis_solicitudes")
-	public String misSolicitudes(Model model, @AuthenticationPrincipal User user) {
+	public String misSolicitudes(@RequestParam(name="page", defaultValue="0") int page, Model model, @AuthenticationPrincipal User user) {
+
+		Pageable pageRequest = PageRequest.of(page, 8);
+		Page<Cliente> clientes = clienteService.findAllByVendedor(user.getUsername(), pageRequest);
+
+		PageRender<Cliente> pageRender = new PageRender<Cliente>("/administrador/mis_solicitudes", clientes);
+
+		model.addAttribute("clientes", clientes);
+		model.addAttribute("page", pageRender);
 		model.addAttribute("user", user.getUsername());
-		model.addAttribute("clientes", clienteService.findAllByVendedor(user.getUsername()));
+
 		return "administrador/mis_solicitudes";
 	}
 

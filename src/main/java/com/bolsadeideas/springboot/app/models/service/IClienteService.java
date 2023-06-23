@@ -16,7 +16,7 @@ public interface IClienteService {
 
 	public Page<Cliente> findAllByVendedorIsnull(Pageable pageable);
 
-	public List<Cliente> findAllByVendedor(String vendedor);
+	public Page<Cliente> findAllByVendedor(String vendedor, Pageable pageable);
 
 	public void save(Cliente cliente);
 	

@@ -6,7 +6,11 @@ import com.bolsadeideas.springboot.app.models.entity.Tarea;
 import com.bolsadeideas.springboot.app.models.entity.Usuario;
 import com.bolsadeideas.springboot.app.models.service.IClienteService;
 import com.bolsadeideas.springboot.app.models.service.ITareaService;
+import com.bolsadeideas.springboot.app.util.paginator.PageRender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -57,7 +61,7 @@ public class TareaController {
                                 RedirectAttributes flash, SessionStatus status){
 
         if(result.hasErrors()){
-            return "/administrador/tareas";
+            return "administrador/tareas";
         }
 
         tareas.setUpdateAt(new Date());
@@ -69,12 +73,18 @@ public class TareaController {
     }
 
     @RequestMapping(value = "administrador/listar_tareas")
-    public String listaDeTareas(Model model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
+    public String listaDeTareas(@RequestParam(name="page", defaultValue="0") int page ,Model model, RedirectAttributes flash, @AuthenticationPrincipal User user) {
 
         Usuario usuario = usuarioDao.findByUsername(user.getUsername());
+        Pageable pageRequest = PageRequest.of(page, 7);
+        Page<Tarea> tareas = tareaService.findAllByUsernameOrderByDesc(usuario.getIdUsuario(), pageRequest);
+
+        PageRender<Tarea> pageRender = new PageRender<Tarea>("/administrador/listar_tareas", tareas);
 
         model.addAttribute("user", user.getUsername());
-        model.addAttribute("tareas", tareaService.findAllByUsernameOrderByDesc(usuario.getIdUsuario()));
+        model.addAttribute("tareas", tareas);
+        model.addAttribute("page", pageRender);
+
         return "administrador/listar_tareas";
     }
 

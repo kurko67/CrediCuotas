@@ -58,7 +58,7 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Cliente> findAllByVendedor(String vendedor) {
-		return (List<Cliente>) clienteDao.findAllByVendedor(vendedor);
+	public Page<Cliente> findAllByVendedor(String vendedor, Pageable pageable) {
+		return clienteDao.findAllByVendedor(vendedor, pageable);
 	}
 }
