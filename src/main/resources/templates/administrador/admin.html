@@ -24,6 +24,11 @@
                 <div class="card-header">
                     <h3 class="card-title"><strong>Nuevas</strong> Solicitudes</h3>
                     <div class="card-tools">
+                            <!-- form search cliente by dni/cuil -->
+                        <form class="form-inline my-2 my-lg-0" th:action="@{/administrador/abusqueda}">
+                            <input class="form-control mr-sm-2" type="search" placeholder="buscar por dni/cuil" aria-label="Search" name="query">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
 
                     </div>
                 </div>

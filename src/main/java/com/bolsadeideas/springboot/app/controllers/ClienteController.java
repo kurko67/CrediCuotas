@@ -45,6 +45,35 @@ public class ClienteController {
 		return "administrador/admin";
 	}
 
+	@RequestMapping(value = "administrador/busqueda")
+	public String busquedaCliente(@RequestParam(name="query", defaultValue="") String cuil ,@RequestParam(name="page", defaultValue="0") int page, Model model, @AuthenticationPrincipal User user) {
+
+		Pageable pageRequest = PageRequest.of(page, 8);
+		Page<Cliente> clientes = clienteService.findAllByVendedorAndCuit(cuil, user.getUsername(),pageRequest);
+
+		PageRender<Cliente> pageRender = new PageRender<Cliente>("/administrador/mis_solicitudes", clientes);
+
+		model.addAttribute("clientes", clientes);
+		model.addAttribute("page", pageRender);
+		model.addAttribute("user", user.getUsername());
+		return "administrador/mis_solicitudes";
+	}
+
+	@RequestMapping(value = "administrador/abusqueda")
+	public String busquedaClienteVendedorNull(@RequestParam(name="query", defaultValue="") String cuil ,@RequestParam(name="page", defaultValue="0") int page, Model model, @AuthenticationPrincipal User user) {
+
+		Pageable pageRequest = PageRequest.of(page, 8);
+		Page<Cliente> clientes = clienteService.findAllByCuitAndVendedorIsNull(cuil,pageRequest);
+
+		PageRender<Cliente> pageRender = new PageRender<Cliente>("/administrador/admin", clientes);
+
+		model.addAttribute("clientes", clientes);
+		model.addAttribute("page", pageRender);
+		model.addAttribute("user", user.getUsername());
+		return "administrador/admin";
+	}
+
+
 
 	@RequestMapping(value = "administrador/mis_solicitudes")
 	public String misSolicitudes(@RequestParam(name="page", defaultValue="0") int page, Model model, @AuthenticationPrincipal User user) {
@@ -200,8 +229,7 @@ public class ClienteController {
 	@ModelAttribute("situacion_laboral")
 	public List<String> situacion_laboral(){
 
-		return Arrays.asList("Asig. Univ. por Hijo", "Desocupado", "Empleado Publico", "Jubilado", "Pensionado",
-							"Resp. Inscripto");
+		return Arrays.asList("PEMPLEADO PRIVADO", "EMPLEADO PUBLICO NACIONAL", "EMPLEADO PUBLICO PROVINCIAL", "JUBILADO Y/O PENSIONADO", "PENSION GRACIABLE" );
 
 	}
 
@@ -222,7 +250,7 @@ public class ClienteController {
 	@ModelAttribute("financiador")
 	public List<String> financiador(){
 
-		return Arrays.asList("SIN FINANCIADOR","BANCO A", "BANCO B", "BANCO C", "BANCO D", "BANCO F");
+		return Arrays.asList("SIN FINANCIADOR","ARGENPESOS", "CALABRIA", "CRISTAL", "DARDO ROCHA", "OK CREDITOS","REGIONAL");
 
 	}
 

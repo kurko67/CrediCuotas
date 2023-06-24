@@ -12,7 +12,7 @@ public interface ITareaDao extends JpaRepository<Tarea, Long> {
     Page<Tarea> findAllByUsernameOrderByDesc(Long iduser, Pageable pageable);
 
     @Query(value = "select * from tareas where username_id_usuario = ?1 and estado = 'CERRADO' order by id_tarea desc", nativeQuery = true)
-    List<Tarea> findAllByUsernameEstadoCerrado(Long iduser);
+    Page<Tarea> findAllByUsernameEstadoCerrado(Long iduser, Pageable pageable);
 
 
 }

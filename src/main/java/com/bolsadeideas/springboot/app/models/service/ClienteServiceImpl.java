@@ -61,4 +61,18 @@ public class ClienteServiceImpl implements IClienteService {
 	public Page<Cliente> findAllByVendedor(String vendedor, Pageable pageable) {
 		return clienteDao.findAllByVendedor(vendedor, pageable);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<Cliente> findAllByVendedorAndCuit(String cuil, String vendedor, Pageable pageable) {
+		return clienteDao.findAllByVendedorAndCuit(cuil, vendedor, pageable);
+	}
+
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<Cliente> findAllByCuitAndVendedorIsNull(String cuil, Pageable pageable) {
+		return clienteDao.findAllByCuitAndVendedorIsNull(cuil, pageable);
+	}
 }

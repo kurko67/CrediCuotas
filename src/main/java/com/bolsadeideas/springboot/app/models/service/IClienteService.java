@@ -18,11 +18,18 @@ public interface IClienteService {
 
 	public Page<Cliente> findAllByVendedor(String vendedor, Pageable pageable);
 
+	public Page<Cliente> findAllByVendedorAndCuit(String cuil, String vendedor, Pageable pageable);
+
+	public Page<Cliente> findAllByCuitAndVendedorIsNull(String cuil, Pageable pageable);
+
+
 	public void save(Cliente cliente);
 	
 	public Cliente findOne(Long id);
 	
 	public void delete(Long id);
+
+
 
 
 	

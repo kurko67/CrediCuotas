@@ -31,8 +31,8 @@ public class TareaServiceImpl implements ITareaService{
 
     @Override
     @Transactional(readOnly = true)
-    public List<Tarea> findAllByUsernameEstadoCerrado(Long iduser) {
-        return iTareaDao.findAllByUsernameEstadoCerrado(iduser);
+    public Page<Tarea> findAllByUsernameEstadoCerrado(Long iduser, Pageable pageable) {
+        return iTareaDao.findAllByUsernameEstadoCerrado(iduser, pageable);
     }
 
     @Override

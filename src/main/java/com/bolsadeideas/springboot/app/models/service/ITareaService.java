@@ -14,7 +14,7 @@ public interface ITareaService {
 
     public Page<Tarea> findAllByUsernameOrderByDesc(Long iduser, Pageable pageable);
 
-    public List<Tarea> findAllByUsernameEstadoCerrado(Long iduser);
+    public Page<Tarea> findAllByUsernameEstadoCerrado(Long iduser, Pageable pageable);
 
     public Page<Tarea> findAll(Pageable pageable);
 
