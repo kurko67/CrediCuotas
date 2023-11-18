@@ -24,9 +24,12 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Iniciar Sesion</p>
 
+      <div class="alert alert-warning" th:if="${error != null }" th:text="${error}"></div><br/>
+
+
       <form method="POST" th:action="@{/login}">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" name="username" id="username"/>
+          <input type="text" class="form-control" placeholder="Username" name="username" id="username" required/>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -34,7 +37,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+          <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

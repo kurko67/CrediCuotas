@@ -56,5 +56,10 @@ public class TareaServiceImpl implements ITareaService{
         iTareaDao.deleteById(id);
     }
 
+    @Override
+    public void DeleTareaByUser(Long id) {
+        iTareaDao.DeleTareaByUser(id);
+    }
+
 
 }

@@ -38,12 +38,12 @@ public class Cliente implements Serializable {
 
 	private String otro_telefono;
 
-	@NotEmpty
+
 	@Email
 	private String email;
 
 	@NotEmpty
-	@Size(min = 8, max = 11)
+	@Size(min = 11, max = 11)
 	private String cuil;
 
 
@@ -71,6 +71,8 @@ public class Cliente implements Serializable {
 	private Float monto_solicitado;
 
 	private Integer plan;
+
+	private Integer montoCuota;
 
 	private String estado;
 
@@ -309,7 +311,13 @@ public class Cliente implements Serializable {
 		this.closedAt = closedAt;
 	}
 
+	public Integer getMontoCuota() {
+		return montoCuota;
+	}
 
+	public void setMontoCuota(Integer montoCuota) {
+		this.montoCuota = montoCuota;
+	}
 
 	private static final long serialVersionUID = 1L;
 

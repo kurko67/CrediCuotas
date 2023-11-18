@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/front/css/reset.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/front/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/front/css/responsive.css}">
+    <script type="text/javascript">const tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/"); document.write(unescape("<script src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript' %3E%3C/script%3E"));</script>
 </head>
 <body>
 
@@ -39,6 +40,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="sitelogo">
+
                         <a th:href="@{/}"><img th:src="@{/front/img/logo.png}" alt="" /></a>
                     </div>
                 </div>
@@ -46,11 +48,11 @@
                     <div class="right-address">
                         <div class="single-address">
                             <div class="icon">
-                                <img th:src="@{/front/img/call.png}" alt="" />
+                                <i class="fa-brands fa fa-whatsapp fa-lg" style="color: #18af31;"></i>
                             </div>
                             <div class="content">
                                 <p>
-                                    <span>Llamanos:</span> +54 261 1 123 123
+                                    <span>Whatsapp al:</span> <a href="https://api.whatsapp.com/send?phone=5492612478508&text=Quiero%20solicitar%20informacion%20sobre%20los%20creditos" blank="_blank">261 2 478 508</a>
                                 </p>
                             </div>
                         </div>
@@ -58,9 +60,9 @@
                             <div class="icon">
                                 <img th:src="@{/front/img/envalope.png}" alt="" />
                             </div>
-                            <div class="content">
+                            <div class="content my-2">
                                 <p>
-                                    <span>Email: </span> info@credicuota.com
+                                    <span>Email: </span> <a href="mailto:credicuotainfo@gmail.com">credicuotainfo@gmail.com</a>
                                 </p>
                             </div>
                         </div>
@@ -81,99 +83,37 @@
                             <li><a th:href="@{/}">HOME</a></li>
                             <li><a th:href="@{/about}">NOSOTROS</a></li>
                             <li><a th:href="@{/services}">SERVICIOS</a></li>
-                            <li><a th:href="@{/contact}">CONTACTO</a></li>
+                            <li><a th:href="@{/contact}">TRABAJA CON NOSOTROS</a></li>
                         </ul>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </header>
 
 <footer th:fragment="footer">
     <section class="footer-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-lg-4">
-                    <div class="footer-widget">
-                        <div class="footer-title">
-                            <img src="asset/img/footer-logo.png" alt="" />
-                        </div>
-                        <p>Over 24 years experience and knowledge Loanplus wе’rе hеrе to рrоvіdе уоu wіth fіnаnсіаl ѕоlutіоnѕ fоr аll уоur lеndіng needs. Whether you are lооkіng fоr any kind of loan, оur lending tеаm wіll explain lеndіng орtіоnѕ to уоu іn a ѕtrаіghtfоrwаrd mаnnеr.</p>
-                        <div class="mail">
-                            <span>Any Queries :</span>support@loanplus.com
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-lg-2">
-                    <div class="footer-widget pages-widget">
-                        <div class="footer-title">
-                            <h4>Solutions</h4>
-                        </div>
-                        <ul>
-                            <li><a href="#">Personal Loan</a></li>
-                            <li><a href="#">Car Loan</a></li>
-                            <li><a href="#">Home Loan</a></li>
-                            <li><a href="#">Education Loan</a></li>
-                            <li><a href="#">Business Loan </a></li>
-                            <li><a href="#">Perday Loan </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-5 col-lg-3">
-                    <div class="footer-widget recent-post">
-                        <div class="footer-title">
-                            <h4>Recent Posts</h4>
-                        </div>
-                        <ul>
-                            <li><a href="#">This book is a treatise on theory
-                                of ethics very popular. <span class="date">January 18, 2018</span></a></li>
-                            <li><a href="#">Be cites of the word in classical
-                                literature to discove. <span class="date">Februay 10, 2018</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <div class="footer-title">
-                            <h4>Newsletter</h4>
-                        </div>
-                        <div class="form-widget">
-                            <p>Subscribe to our newsletter and get latest news related to loan,credit cards,perday loan,interates rate.</p>
-                            <form action="#" method="get">
-                                <div class="newsletter">
-                                    <label for="envalope" class="fa fa-envelope"></label>
-                                    <input id="envalope" type="email" name="email" placeholder="Email address">
-                                </div>
-                                <button type="submit" class="button btn btn-default btn-lg">Subscribe +</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="copy-right-section">
+
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
                     <div class="copyright-text">
-                        <p><i class="fa fa-copyright"></i> 2018 Loanplus. All Rights Reserved</p>
+                        <p><i class="fa fa-copyright"></i> 2023 Credicuota.com All Rights Reserved</p>
                     </div>
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="footer-nave">
-                        <a href="#"><i class="fa fa-facebook-square"></i></a>
-                        <a href="#"><i class="fa fa-twitter-square"></i></a>
-                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-square"></i></a>
-                        <a href="#"><i class="fa fa-vimeo-square"></i></a>
+
+                        <script language="JavaScript" type="text/javascript">TrustLogo("https://micuenta.donweb.com/img/sectigo_positive_md.png", "CL1", "none");</script><a href="https://donweb.com/es-ar/certificados-ssl" id="comodoTL" title="Certificados SSL Argentina">Certificados SSL Argentina</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    </section>
+
     <!-- end of footer area -->
     <!-- Optional JavaScript -->
     <script th:src="@{/front/js/jquery-3.3.1.min.js}"></script>

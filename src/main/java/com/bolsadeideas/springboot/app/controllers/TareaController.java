@@ -39,7 +39,7 @@ public class TareaController {
     public String crear_tareas(@PathVariable(value = "idcliente") Long idcliente, Model model, RedirectAttributes flash, @AuthenticationPrincipal User user){
 
         Cliente cliente = clienteService.findOne(idcliente);
-        Usuario usuario = usuarioDao.findByUsername(user.getUsername());
+        Usuario usuario = usuarioDao.findByUsername(cliente.getVendedor());
 
         if(cliente == null){
             flash.addFlashAttribute("error", "El cliente ingresado no existe en la base de datos");

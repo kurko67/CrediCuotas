@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html  lang="es" xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+    <div class="content-wrapper py-3">
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Generar Nuevo Usuario</h3>
+                        </div>
+
+
+                        <form th:action="@{/administrador/form_guardar_user}" th:object="${usuario}" method="post">
+                            <div class="card-body">
+
+                                <div class="row list-input">
+
+                                    <div class="col-md-3 mr0">
+                                        <div class="form-group">
+                                            <label for="username">Nombre Usuario</label>
+                                            <input type="text" th:field="*{username}" class="form-control"
+                                                   th:errorclass="'form-control alert-danger'" placeholder="NOMBRE DE USUARIO" id="username"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" th:field="*{password}" class="form-control"
+                                                   th:errorclass="'form-control alert-danger'" placeholder="CONTRASEÑA" id="password"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="card-footer">
+                                    <input type="submit" value="Guardar cambios" class="button btn btn-primary btn-lg" />
+                                </div>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+</section>
+
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+</body>
+</html>

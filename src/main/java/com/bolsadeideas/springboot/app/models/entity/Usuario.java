@@ -31,6 +31,8 @@ public class Usuario implements Serializable {
     //Lista de roles que acepta el usuario
     private List<Rol> roles;
 
+    private boolean habilitado;
+
     //constructor empty
     public Usuario(){
         itemTareas = new ArrayList<Tarea>();
@@ -78,6 +80,14 @@ public class Usuario implements Serializable {
 
     public void addItemTarea(Tarea ItemTareas){
         itemTareas.add(ItemTareas);
+    }
+
+    public boolean getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
     }
 
     private static final long serialVersionUID = 1L;

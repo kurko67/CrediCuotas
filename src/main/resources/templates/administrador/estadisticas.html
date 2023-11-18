@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 
+<!--
 <head th:replace="layout/layout_back/layout_back :: head"></head>
+-->
+
+<head>
+
+    <link rel="stylesheet" th:href="@{/back/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" th:href="@{/back/dist/css/adminlte.min.css}">
+
+</head>
 
 <body>
 
@@ -11,18 +22,16 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper py-3">
-
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-3 col-6">
+                <div class="col-sm-3 col-3">
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-
-                            <p>Nuevos clientes</p>
+                            <h3 th:text="${cantidad_clientes} + ' Solicitudes'"></h3>
+                            <p>Total de Solicitudes</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -34,9 +43,8 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>$7.890.000</h3>
-
-                            <p>Prestado</p>
+                            <h3 th:text="${cantidad_aprobado} + ' Solicitudes'"></h3>
+                            <p>Respuesta de Disponible</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -49,9 +57,8 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
-
-                            <p>Contratos cerrados</p>
+                            <h3 th:text="${cantidad_enProceso} + ' Solicitudes'"></h3>
+                            <p>Solicitudes en Proceso</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -63,9 +70,8 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>15</h3>
-
-                            <p>Contratos no cerrados</p>
+                            <h3 th:text="${cantidad_Rechazadas} + ' Solicitudes'"></h3>
+                            <p>Solicitudes Rechazadas</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
@@ -74,79 +80,30 @@
                     </div>
                 </div>
                 <!-- ./col -->
-            </div>
-            <!-- /.row -->
-            <!-- Main row -->
-            <div class="row">
-                <!-- Left col -->
-                <section class="col-lg-7 connectedSortable">
-                    <!-- Custom tabs (Charts with tabs)-->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="fas fa-chart-pie mr-1"></i>
-                                Grafico de total de prestamos por mes
-                            </h3>
-                            <div class="card-tools">
-                                <ul class="nav nav-pills ml-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div><!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="tab-content p-0">
-                                <!-- Morris chart - Sales -->
-                                <div class="chart tab-pane active" id="revenue-chart"
-                                     style="position: relative; height: 300px;">
-                                    <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
-                                </div>
-                                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
-                                </div>
-                            </div>
-                        </div><!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                    <!-- /.card -->
-                </section>
-                <!-- /.Left col -->
-                <!-- right col (We are only adding the ID to make the widgets sortable)-->
-                <section class="col-lg-5 connectedSortable">
-                    <!-- Map card -->
-                    <div class="card bg-gradient-primary">
-                        <div class="card-header border-0">
-                            <h3 class="card-title">
-                                <i class="fas fa-map-marker-alt mr-1"></i>
-                                Clientes por provincia
-                            </h3>
-                            <!-- card tools -->
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-primary btn-sm daterange" title="Date range">
-                                    <i class="far fa-calendar-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-primary btn-sm" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                            <!-- /.card-tools -->
+                <div class="col-xl-12 col-12">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3 th:text="'Solicitudes Liquidadas: ' + ${cantidad_Liquidadas} + ' Total: $' + ${sum_Liquidadas}" class="text-center"></h3>
+                            <p class="text-center">Total Liquidado</p>
                         </div>
-                        <div class="card-body">
-                            <div id="world-map" style="height: 250px; width: 100%;"></div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
                         </div>
-                        <!-- /.card-body-->
-                </section>
-                <!-- right col -->
-            </div>
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
 
-<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section th:replace="administrador/chart :: chart"></section>
+
+
+    </section>
+</div>
+
+    <footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
 
 </body>
 </html>

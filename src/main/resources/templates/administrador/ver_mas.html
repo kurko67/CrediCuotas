@@ -37,8 +37,9 @@
 							<div class="row list-input">
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="nombre">Nombre cliente</label>
 										<input type="text" th:field="*{nombre}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="NOMBRE" readonly/> <small
+											   th:errorclass="'form-control alert-danger'" placeholder="NOMBRE" id="nombre" readonly/> <small
 											class="form-text text-danger"
 											th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 									</div>
@@ -46,8 +47,9 @@
 
 								<div class="col-md-3">
 									<div class="form-group">
+										<label for="apellido">Apellido</label>
 										<input type="text" th:field="*{apellido}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="APELLIDO" readonly/> <small
+											   th:errorclass="'form-control alert-danger'" placeholder="APELLIDO" id="apellido" readonly/> <small
 											class="form-text text-danger"
 											th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
 									</div>
@@ -55,6 +57,7 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="cuil">DNI/CUIL</label>
 										<input type="text" th:field="*{cuil}" class="form-control"
 											   th:errorclass="'form-control alert-danger'" placeholder="DNI O CUIL/CUIT" id="cuil" readonly/> <small
 											class="form-text text-danger"
@@ -64,8 +67,9 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="celular">N° Celular</label>
 										<input type="text" th:field="*{celular}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="CELULAR" readonly/> <small
+											   th:errorclass="'form-control alert-danger'" placeholder="CELULAR" id="celular" readonly/> <small
 											class="form-text text-danger"
 											th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}"></small>
 									</div>
@@ -73,15 +77,17 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="otro_telefono">Telefono alternativo</label>
 										<input type="text" th:field="*{otro_telefono}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="TELEFONO ALTERNATIVO" readonly/>
+											   th:errorclass="'form-control alert-danger'" placeholder="TELEFONO ALTERNATIVO" id="otro_telefono" readonly/>
 									</div>
 								</div>
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="email">Email</label>
 										<input type="text" th:field="*{email}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="EMAIL" readonly/> <small
+											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="EMAIL" id="email" readonly/> <small
 											class="form-text text-danger"
 											th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
 									</div>
@@ -89,21 +95,24 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="domicilio">Domicilio</label>
 										<input type="text" th:field="*{domicilio}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="DOMICILIO" readonly/>
+											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="DOMICILIO" id="domicilio" readonly/>
 									</div>
 								</div>
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="localidad">Localidad</label>
 										<input type="text" th:field="*{localidad}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="LOCALIDAD" readonly/>
+											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="LOCALIDAD" id="localidad" readonly/>
 									</div>
 								</div>
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
-										<select id="provincia" th:field="*{provincia}" class="form-control" readonly>
+										<label for="provincia">Provincia</label>
+										<select id="provincia" th:field="*{provincia}" class="form-control" disabled>
 											<option value="">-- Seleccionar Provincia</option>
 											<option th:each="provincia: ${provincia}" th:text="${provincia}" th:value="${provincia}"></option>
 										</select>
@@ -113,14 +122,16 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="Dependencia">dependencia</label>
 										<input type="text" th:field="*{dependencia}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="DEPENDENCIA" readonly/>
+											   th:errorclass="'form-control alert-danger'" PLACEHOLDER="DEPENDENCIA" id="dependencia" readonly/>
 									</div>
 								</div>
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
-										<select id="situacion_laboral" th:field="*{situacion_laboral}" class="form-control" readonly>
+										<label for="Dependencia">dependencia</label>
+										<select id="situacion_laboral" th:field="*{situacion_laboral}" class="form-control" disabled>
 											<option value="">--Seleccionar situación Laboral</option>
 											<option th:each="situacion_laboral: ${situacion_laboral}" th:text="${situacion_laboral}" th:value="${situacion_laboral}"></option>
 										</select>
@@ -131,8 +142,9 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="banco_cobro">Banco de cobro</label>
 										<input type="text" th:field="*{banco_cobro}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="BANCO DE COBRO" readonly/> <small
+											   th:errorclass="'form-control alert-danger'" placeholder="BANCO DE COBRO" id="banco_cobro" readonly/> <small
 											class="form-text text-danger"
 											th:if="${#fields.hasErrors('banco_cobro')}" th:errors="*{banco_cobro}"></small>
 									</div>
@@ -140,7 +152,8 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
-										<select id="canal" th:field="*{canal}" class="form-control" readonly>
+										<label for="canal">Canal de contacto</label>
+										<select id="canal" th:field="*{canal}" class="form-control" disabled>
 											<option value="">--Seleccionar canal</option>
 											<option th:each="canal: ${canal}" th:text="${canal}" th:value="${canal}"></option>
 										</select>
@@ -149,21 +162,32 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="monto_solicitado">Monto Aprobado</label>
 										<input type="number" th:field="*{monto_solicitado}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="MONTO SOLICITADO" readonly/>
+											   th:errorclass="'form-control alert-danger'" placeholder="MONTO SOLICITADO" id="monto_solicitado" readonly/>
 									</div>
 								</div>
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
+										<label for="plan">Cantidad de cuotas</label>
 										<input type="number" th:field="*{plan}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="CANTIDAD DE CUOTAS" MAX="48" readonly/>
+											   th:errorclass="'form-control alert-danger'" placeholder="CANTIDAD DE CUOTAS" MAX="48" id="plan" readonly/>
 									</div>
 								</div>
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
-										<select id="estado" th:field="*{estado}" class="form-control" readonly>
+										<label for="montoCuota">Monto de la cuota</label>
+										<input type="number" th:field="*{montoCuota}" class="form-control"
+											   th:errorclass="'form-control alert-danger'" placeholder="MONTO DE LA CUOTA" id="montoCuota" readonly/>
+									</div>
+								</div>
+
+								<div class="col-md-3 mr0">
+									<div class="form-group">
+										<label for="estado">Estado solicitud</label>
+										<select id="estado" th:field="*{estado}" class="form-control" disabled>
 											<option th:each="estado: ${estado}" th:text="${estado}" th:value="${estado}" th:selected="${estado == 'EN PROCESO'}" ></option>
 										</select>
 
@@ -172,7 +196,8 @@
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
-										<select id="financiador" th:field="*{financiador}" class="form-control" readonly>
+										<label for="financiador">Financiador</label>
+										<select id="financiador" th:field="*{financiador}" class="form-control" disabled>
 											<option th:each="financiador: ${financiador}" th:text="${financiador}" th:value="${financiador}" ></option>
 										</select>
 									</div>
@@ -180,21 +205,42 @@
 
 								<div class="col-md-4 mr0">
 									<div class="form-group">
+										<label for="observacion">Observacion</label>
 										<input type="text" th:field="*{observacion}" class="form-control"
-											   th:errorclass="'form-control alert-danger'" placeholder="OBSERVACION" readonly/>
+											   th:errorclass="'form-control alert-danger'" placeholder="OBSERVACION" id="observacion" readonly/>
+									</div>
+								</div>
+
+
+								<div class="col-md-3 mr0">
+									<div class="form-group">
+										<label for="vendedor">Vendedor</label>
+										<input type="text" id="vendedor" name="vendedor" th:field="*{vendedor}" class="form-control" readonly/>
 									</div>
 								</div>
 
 								<div class="col-md-3 mr0">
 									<div class="form-group">
-										<input type="text" id="vendedor" name="vendedor" th:value="${user}" class="form-control" readonly/>
+										<label for="created_at">FECHA INICIO</label>
+										<input type="text" th:field="*{createAt}" class="form-control"
+											   th:errorclass="'form-control alert-danger'" placeholder="FECHA DE INICIO" id="created_at" readonly/>
 									</div>
 								</div>
+
+								<div class="col-md-3 mr0">
+									<div class="form-group">
+										<label for="closedAt">FECHA CIERRE</label>
+										<input type="text" th:field="*{closedAt}" class="form-control"
+											   th:errorclass="'form-control alert-danger'" placeholder="FECHA DE INICIO" id="closedAt" readonly/>
+									</div>
+								</div>
+
+
 						</div>
 						</div>
 					</form>
 
-					<div class="card-footer">
+					<div class="card-footer table-responsive">
 
 						<table class="table table-striped table-hover table-bordered my-3" th:if="${cliente.itemObservacion != null and !cliente.itemObservacion.empty}">
 							<h4>Movimientos</h4>
@@ -213,10 +259,15 @@
 						</table>
 
 						<div class="text-nowrap p-2" th:if="${cliente.itemObservacion == null or cliente.itemObservacion.empty}">
-							<span>El cliente no posee observaciones</span>
+							<div class="alert alert-light alert-dismissible fade show" role="alert">
+								<strong>La solicitud no posee observaciones</strong>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
 						</div>
 
-						<table class="table table-striped table-hover table-bordered my-3" th:if="${cliente.itemTareas != null and !cliente.itemTareas.empty}">
+						<table class="table table-striped table-hover table-bordered my-3 table-responsive" th:if="${cliente.itemTareas != null and !cliente.itemTareas.empty}">
 							<h4>Tareas</h4>
 							<thead>
 							<tr>
@@ -235,9 +286,13 @@
 						</table>
 
 						<div class="text-nowrap p-2" th:if="${cliente.itemTareas == null or cliente.itemTareas.empty}">
-							<span>El cliente no posee tareas</span>
+							<div class="alert alert-light alert-dismissible fade show" role="alert">
+								<strong>La solicitud no posee tareas</strong>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
 						</div>
-
 					</div>
 				</div>
 

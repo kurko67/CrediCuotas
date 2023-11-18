@@ -3,6 +3,7 @@ package com.bolsadeideas.springboot.app.controllers;
 import java.util.Locale;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -46,5 +47,7 @@ public class WebConfig implements WebMvcConfigurer{
 
 
     }
+
+
 
 }

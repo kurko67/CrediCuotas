@@ -30,7 +30,6 @@ public class Tarea implements Serializable {
     private Date updateAt;
 
     @NotNull
-    @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaTarea;
 
