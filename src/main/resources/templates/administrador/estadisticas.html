@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<!--
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+-->
+
+<head>
+
+    <link rel="stylesheet" th:href="@{/back/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" th:href="@{/back/dist/css/adminlte.min.css}">
+
+</head>
+
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper py-3">
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-sm-3 col-3">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3 th:text="${cantidad_clientes} + ' Solicitudes'"></h3>
+                            <p>Total de Solicitudes</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3 th:text="${cantidad_aprobado} + ' Solicitudes'"></h3>
+                            <p>Respuesta de Disponible</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3 th:text="${cantidad_enProceso} + ' Solicitudes'"></h3>
+                            <p>Solicitudes en Proceso</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3 th:text="${cantidad_Rechazadas} + ' Solicitudes'"></h3>
+                            <p>Solicitudes Rechazadas</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-xl-12 col-12">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3 th:text="'Solicitudes Liquidadas: ' + ${cantidad_Liquidadas} + ' Total: $' + ${sum_Liquidadas}" class="text-center"></h3>
+                            <p class="text-center">Total Liquidado</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section th:replace="administrador/chart :: chart"></section>
+
+
+    </section>
+</div>
+
+    <footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
+
+</body>
+</html>

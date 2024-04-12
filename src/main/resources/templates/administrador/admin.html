@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head th:replace="layout/layout_back/layout_back :: head"></head>
+
+<body>
+
+    <nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+    <nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+
+    <div class="content-wrapper py-3">
+
+            <div class="col-md-12">
+                <div>
+                    <div class="alert alert-success" th:if="${success != null}" th:text="${success}">X</div>
+                    <div class="alert alert-danger" th:if="${error != null}" th:text="${error}">X</div>
+                    <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}">X</div>
+                    <div class="alert alert-info" th:if="${info != null}" th:text="${info}">X</div>
+                </div>
+                <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><strong>Nuevas</strong> Solicitudes</h3>
+                    <div class="card-tools">
+                            <!-- form search cliente by dni/cuil -->
+                        <form class="form-inline my-2 my-lg-0" th:action="@{/administrador/abusqueda}">
+                            <input class="form-control mr-sm-2" type="search" placeholder="buscar por dni/cuil" aria-label="Search" name="query">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div th:if="${clientes != null and !clientes.empty}" class="card-body p-0 table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>CUIL</th>
+                            <th>Teléfono</th>
+                            <th class="d-none d-sm-table-cell">Provincia</th>
+                            <th class="d-none d-sm-table-cell">Sit. Laboral</th>
+                            <th class="d-none d-sm-table-cell">Banco</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cliente: ${clientes}">
+                            <td th:text="${cliente.idCliente}"></td>
+                            <td th:text="${cliente.nombre}"></td>
+                            <td th:text="${cliente.apellido}"></td>
+                            <td th:text="${cliente.cuil}"></td>
+                            <td>
+                                <a  th:text="${cliente.celular}" th:href="'https://api.whatsapp.com/send?phone=' + ${cliente.celular} + '&text=Buen%20Dia/Buenas%20tardes%20nos%20contactamos%20desde%20credicuota'" target="_blank">
+                                </a>
+                            </td>
+                            <td class="d-none d-sm-table-cell" th:text="${cliente.provincia}"></td>
+                            <td class="d-none d-sm-table-cell" th:text="${cliente.situacion_laboral}"></td>
+                            <td class="d-none d-sm-table-cell" th:text="${cliente.banco_cobro}"></td>
+                            <td th:text="${cliente.estado}"></td>
+                            <td><a class="btn btn-info btn-sm"
+                                   th:href="@{/administrador/form/} + ${cliente.idCliente}" th:text="Asignar"></a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="text-center p-2" th:if="${clientes == null or clientes.empty}">
+                        <div class="alert alert-info my-4">No se encontraron nuevas solicitudes</div>
+                    </div>
+                <div class="card-footer">
+                    <nav th:replace="administrador/paginator-nav :: paginator"></nav>
+                </div>
+            </div>
+            </div>
+
+            </div>
+
+
+
+    </div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html  lang="es" xmlns:th="http://www.thymeleaf.org"
+	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+	<div class="content-wrapper py-3">
+
+		<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-md-12">
+
+				<div class="card card-primary">
+					<div class="card-header">
+						<h3 class="card-title">Gestion de usuarios</h3>
+					</div>
+
+					<form th:action="@{/administrador/guardar_usuario}" th:object="${usuario}" method="post">
+						<div class="modal-body">
+
+							<input type="hidden" th:field="*{idUsuario}" id="idUsuario">
+
+							<div class="form-group">
+								<label for="username">Usuario</label>
+								<input type="text" class="form-control" id="username" th:errorclass="'form-control alert-danger'" th:field="*{username}" readonly/>
+								<small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="form-text text-danger"></small>
+							</div>
+
+							<div class="form-group">
+								<label for="roles">Roles</label>
+								<select id="roles" th:field="*{roles}" class="form-control" disabled>
+									<option th:each="rol: ${usuario.roles}" th:text="${rol.nombre}" th:value="${rol.nombre}"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="password">Nueva contraseña</label>
+								<input type="password" class="form-control" id="password" th:errorclass="'form-control alert-danger'" th:field="*{password}" required/>
+								<small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="form-text text-danger"></small>
+							</div>
+
+							<input type="submit" value="Guardar cambios" class="button btn btn-primary btn-lg" />
+
+						</div>
+
+					</form>
+
+				</div>
+
+			</div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+</body>
+</html>

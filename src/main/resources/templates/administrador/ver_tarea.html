@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html  lang="es" xmlns:th="http://www.thymeleaf.org"
+	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+	<div class="content-wrapper py-3">
+
+		<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-md-12">
+
+				<div class="card card-primary">
+					<div class="card-header">
+						<h3 class="card-title">Información de Tarea N° <span th:text="${tarea.idTarea} + ' - Estado: ' + ${tarea.estado} + ' - para el dia ' + ${tarea.fechaTarea} "></span></h3>
+						<div class="card-tools">
+
+						</div>
+					</div>
+						<div class="card-body">
+							<div class="row list-input">
+								<div class="col-md-3 mr0">
+									<div class="form-group">
+										<label for="nombre" class="form-label">Nombre</label>
+										<input type="text" th:field="${tarea.cliente.nombre}" class="form-control"
+											   th:errorclass="'form-control alert-danger'" id="nombre" readonly/>
+									</div>
+								</div>
+								<div class="col-md-3 mr0">
+									<div class="form-group">
+										<label for="apellido" class="form-label">Apellido</label>
+										<input type="text" th:field="${tarea.cliente.apellido}" class="form-control"
+											   th:errorclass="'form-control alert-danger'" id="apellido" readonly/>
+									</div>
+								</div>
+								<div class="col-md-3 mr0">
+									<div class="form-group">
+										<label for="createdAt" class="form-label">Fecha de creación</label>
+										<input type="text" th:field="${tarea.createdAt}" class="form-control"
+											   th:errorclass="'form-control alert-danger'" id="createdAt" readonly/>
+									</div>
+								</div>
+								<div class="col-md-3 mr0">
+									<div class="form-group">
+										<label for="fecha_cierre" class="form-label">Fecha de cierre</label>
+										<input type="text" th:field="${tarea.fechaCierre}" class="form-control"
+											   th:errorclass="'form-control alert-danger'" id="fecha_cierre" readonly/>
+									</div>
+								</div>
+								<div class="col-md-12 mr0">
+									<div class="form-group">
+										<label for="comentario" class="form-label">Comentario</label>
+										<input type="text" th:field="${tarea.comentario}" class="form-control"
+											   th:errorclass="'form-control alert-danger'"  id="comentario" readonly/>
+									</div>
+								</div>
+						</div>
+						</div>
+
+				</div>
+
+				<div th:if="${tarea.estado == 'ABIERTO'}" class="card-footer">
+					<span><a class="button btn btn-danger btn-lg" th:href="@{/administrador/cerrar_tarea/} + ${tarea.idTarea}" role="button"
+							 onclick="return confirm('¿Estas seguro que quieres cerrar la tarea?');">Cerrar tarea</a></span>
+				</div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+</body>
+</html>

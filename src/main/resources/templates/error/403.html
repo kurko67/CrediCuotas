@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout_front/layout_front :: head"></head>
+
+<body class="js">
+<div id="preloader"></div>
+<!-- start header area -->
+<header th:replace="layout/layout_front/layout_front :: header"></header>
+<!-- end of header area -->
+
+
+<section class="error-page section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="error-content">
+          <h4>Opps! Al parecer hubo un problema</h4>
+          <h2>403</h2>
+          <h5>No tienes permisos en esta sección</h5>
+          <a th:href="@{/}" class="btn-primary btn btn-sm"> << Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- end of our partner section -->
+<!-- start footer -->
+
+<head th:replace="layout/layout_front/layout_front :: footer"></head>
+
+<!-- end footer -->
+
+
+</body>
+</html>

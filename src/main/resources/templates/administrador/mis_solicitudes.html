@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+
+    <div class="content-wrapper py-3">
+
+            <div class="col-md-12">
+                    <div th:if="${success != null}" >
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" >
+                            <strong th:text="${success}"></strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><strong>Mis</strong> Solicitudes</h3>
+
+                        <div class="card-tools">
+
+                            <div class="row">
+
+                                <div>
+                                    <form class="form-inline my-2 my-lg-0" th:action="@{/administrador/busqueda}">
+                                        <input class="form-control mr-sm-2" type="search" placeholder="buscar por dni/cuil" aria-label="Search" name="query">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                                    </form>
+                                </div>
+                                <div class="pl-2 pr-2 input-group-append">
+                                    <a th:href="@{/administrador/form}" class="btn btn-primary">Nueva Solicitud</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div>
+                                <form class="form-inline my-2 my-lg-0" th:action="@{/administrador/resultado_busqueda}">
+                                    <select name="estado" id="estado" class="form-control">
+                                        <option value="todos" selected>Ver Todos</option>
+                                        <option value="sin estado" >Ver sin estado</option>
+                                        <option value="liquidado" >Ver Liquidados</option>
+                                        <option value="rechazado">Ver Rechazados</option>
+                                        <option value="enviado">Ver Enviados</option>
+                                        <option value="observado">Ver Observados</option>
+                                        <option value="resp. de disponible">Ver Resp de disponible</option>
+                                    </select>
+                                    <span>&nbsp<button class="btn btn-outline-primary btn-sm my-2" type="submit">VER</button></span>
+
+                                </form>
+                            </div>
+                        </div>
+
+                <div th:if="${clientes != null and !clientes.empty}" class="card-body p-0 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Fecha Inicio</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>CUIL</th>
+                            <th>Teléfono</th>
+                            <th>Provincia</th>
+                            <th>Sit. Laboral</th>
+                            <th>Banco</th>
+                            <th>Estado</th>
+                            <th>Ver</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cliente: ${clientes}">
+                            <td th:text="${{#dates.format(cliente.createAt, 'yyyy-MM-dd')}}"></td>
+                            <td th:text="${cliente.nombre}"></td>
+                            <td th:text="${cliente.apellido}"></td>
+                            <td th:text="${cliente.cuil}"></td>
+                            <td>
+                                <a  th:text="${cliente.celular}" th:href="'https://api.whatsapp.com/send?phone=' + ${cliente.celular} + '&text=Buen%20Dia/Buenas%20tardes%20nos%20contactamos%20desde%20credicuota'" target="_blank">
+                                </a>
+                            </td>
+                            <td th:text="${cliente.provincia}"></td>
+                            <td th:text="${cliente.situacion_laboral}"></td>
+                            <td th:text="${cliente.banco_cobro}"></td>
+                            <td th:text="${cliente.estado}"></td>
+                            <td><a class="btn btn-info btn-sm"
+                                   th:href="@{/administrador/ver_mas/} + ${cliente.idCliente}" th:text="'Ver +'"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="text-center p-2" th:if="${clientes == null or clientes.empty}">
+                        <span>Usted no posee solicitudes asignadas</span>
+                    </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <nav th:replace="administrador/paginator-nav :: paginator"></nav>
+                    </div>
+
+            </div>
+            </div>
+
+            </div>
+
+
+
+    </div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+
+    <div class="content-wrapper py-3">
+
+            <div class="col-md-12">
+                <div>
+                    <div class="alert alert-success" th:if="${success != null}" th:text="${success}">X</div>
+                    <div class="alert alert-danger" th:if="${error != null}" th:text="${error}">X</div>
+                    <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}">X</div>
+                    <div class="alert alert-info" th:if="${info != null}" th:text="${info}">X</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><strong>Resultados de busqueda para Estado:</strong> <span th:text="${estado}"></span></h3>
+
+                        <div class="card-tools">
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div>
+                                <form class="form-inline my-2 my-lg-0" th:action="@{/administrador/resultado_busqueda}">
+                                    <select name="estado" id="estado" class="form-control">
+                                        <option value="todos" selected>Ver Todos</option>
+                                        <option value="sin estado" >Ver sin estado</option>
+                                        <option value="liquidado" >Ver Liquidados</option>
+                                        <option value="rechazado">Ver Rechazados</option>
+                                        <option value="enviado">Ver Enviados</option>
+                                        <option value="observado">Ver Observados</option>
+                                        <option value="resp. de disponible">Ver Resp de disponible</option>
+                                    </select>
+                                    <span>&nbsp<button class="btn btn-outline-primary btn-sm my-2" type="submit">VER</button></span>
+
+                                </form>
+                            </div>
+                        </div>
+
+                <div th:if="${clientes != null and !clientes.empty}" class="card-body p-0 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Fecha Inicio</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>CUIL</th>
+                            <th>Teléfono</th>
+                            <th>Provincia</th>
+                            <th>Sit. Laboral</th>
+                            <th>Banco</th>
+                            <th>Estado</th>
+                            <th>Ver</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cliente: ${clientes}">
+                            <td th:text="${{#dates.format(cliente.createAt, 'yyyy-MM-dd')}}"></td>
+                            <td th:text="${cliente.nombre}"></td>
+                            <td th:text="${cliente.apellido}"></td>
+                            <td th:text="${cliente.cuil}"></td>
+                            <td>
+                                <a  th:text="${cliente.celular}" th:href="'https://api.whatsapp.com/send?phone=' + ${cliente.celular} + '&text=Buen%20Dia/Buenas%20tardes%20nos%20contactamos%20desde%20credicuota'" target="_blank">
+                                </a>
+                            </td>
+                            <td th:text="${cliente.provincia}"></td>
+                            <td th:text="${cliente.situacion_laboral}"></td>
+                            <td th:text="${cliente.banco_cobro}"></td>
+                            <td th:text="${cliente.estado}"></td>
+                            <td><a class="btn btn-info btn-sm"
+                                   th:href="@{/administrador/ver_mas/} + ${cliente.idCliente}" th:text="'Ver +'"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="text-center p-2" th:if="${clientes == null or clientes.empty}">
+                        <span>La consulta no arrojo resultados</span>
+                    </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <nav>
+
+                            <ul class="pagination">
+                                <li class="page-item" th:class="${page.first? 'page-item disabled': 'page-item'}">
+                                    <span class="page-link" th:if="${page.first}">Primera</span>
+                                    <a class="page-link" th:if="${not page.first}" th:href="@{${page.url}(page=0, estado =  ${estado})}">Primera</a>
+                                </li>
+
+
+                                <li class="page-item" th:class="${not page.hasPrevious? 'page-item disabled': 'page-item'}">
+                                    <span class="page-link" th:if="${not page.hasPrevious}">&laquo;</span>
+                                    <a class="page-link" th:if="${page.hasPrevious}" th:href="@{${page.url}(page=${page.paginaActual-2}, estado =  ${estado})}">&laquo;</a>
+                                </li>
+
+                                <li class="page-item" th:each="item : ${page.paginas}" th:class="${item.actual? 'page-item active': 'page-item'}">
+                                    <span class="page-link" th:if="${item.actual}" th:text="${item.numero}"></span>
+                                    <a class="page-link" th:if="${not item.actual}" th:href="@{${page.url}(page=${item.numero-1}, estado =  ${estado})}" th:text="${item.numero}"></a>
+                                </li>
+
+                                <li class="page-item" th:class="${not page.hasNext? 'page-item disabled': 'page-item'}">
+                                    <span class="page-link" th:if="${not page.hasNext}">&raquo;</span>
+                                    <a class="page-link" th:if="${page.hasNext}" th:href="@{${page.url}(page=${page.paginaActual}, estado =  ${estado})}">&raquo;</a>
+                                </li>
+
+                                <li class="page-item" th:class="${page.last? 'page-item disabled': 'page-item'}">
+                                    <span class="page-link" th:if="${page.last}">&Uacute;ltima</span>
+                                    <a class="page-link" th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPaginas-1}, estado =  ${estado})}">&Uacute;ltima</a>
+                                </li>
+                            </ul>
+
+                        </nav>
+                    </div>
+
+            </div>
+            </div>
+
+            </div>
+
+
+
+    </div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
+</body>
+</html>

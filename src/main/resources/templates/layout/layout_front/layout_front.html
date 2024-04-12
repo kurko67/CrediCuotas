@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:fragment="head">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Credicuota">
+    <meta name="keywords" content="credicuota, creditos, prestamos, prestamos personales">
+    <link rel="icon" th:href="@{/front/img/favicon.png}" type="image/gif">
+    <title>Credicuota</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/front/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/front/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/front/css/reset.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/front/css/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/front/css/responsive.css}">
+    <script type="text/javascript">const tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/"); document.write(unescape("<script src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript' %3E%3C/script%3E"));</script>
+</head>
+<body>
+
+<header class="header-area" th:fragment="header">
+    <div class="topbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <div class="left-info">
+                        <p><span class="fa fa-clock"></span>Horarios : Lun - Vie : 8.30 a 18.00</p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="right-info">
+                        <p><a th:href="@{/administrador/admin}"><span><i class="fa fa-sign-in"></i>Sign in</span> </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-right-address">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="sitelogo">
+
+                        <a th:href="@{/}"><img th:src="@{/front/img/logo.png}" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="right-address">
+                        <div class="single-address">
+                            <div class="icon">
+                                <i class="fa-brands fa fa-whatsapp fa-lg" style="color: #18af31;"></i>
+                            </div>
+                            <div class="content">
+                                <p>
+                                    <span>Whatsapp al:</span> <a href="https://api.whatsapp.com/send?phone=5492612478508&text=Quiero%20solicitar%20informacion%20sobre%20los%20creditos" blank="_blank">261 2 478 508</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-address">
+                            <div class="icon">
+                                <img th:src="@{/front/img/envalope.png}" alt="" />
+                            </div>
+                            <div class="content my-2">
+                                <p>
+                                    <span>Email: </span> <a href="mailto:credicuotainfo@gmail.com">credicuotainfo@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="single-address">
+                            <a th:href="@{/apply-now}" class="button btn btn-default btn-sm"><i class="fa fa-reply-all"></i> SOLICITAR PRESTAMO</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11 col-lg-11">
+                    <div id="cssmenu">
+                        <ul>
+                            <li><a th:href="@{/}">HOME</a></li>
+                            <li><a th:href="@{/about}">NOSOTROS</a></li>
+                            <li><a th:href="@{/services}">SERVICIOS</a></li>
+                            <li><a th:href="@{/contact}">TRABAJA CON NOSOTROS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</header>
+
+<footer th:fragment="footer">
+    <section class="footer-area section-padding">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <div class="copyright-text">
+                        <p><i class="fa fa-copyright"></i> 2023 Credicuota.com All Rights Reserved</p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <div class="footer-nave">
+
+                        <script language="JavaScript" type="text/javascript">TrustLogo("https://micuenta.donweb.com/img/sectigo_positive_md.png", "CL1", "none");</script><a href="https://donweb.com/es-ar/certificados-ssl" id="comodoTL" title="Certificados SSL Argentina">Certificados SSL Argentina</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- end of footer area -->
+    <!-- Optional JavaScript -->
+    <script th:src="@{/front/js/jquery-3.3.1.min.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script th:src="@{/front/js/popper.min.js}"></script>
+    <script th:src="@{/front/js/bootstrap.min.js}"></script>
+    <script th:src="@{/front/js/jquery.nice-select.js}"></script>
+    <script th:src="@{/front/js/menumaker.js}"></script>
+    <script th:src="@{/front/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/front/js/slider.js}"></script>
+    <script th:src="@{/front/js/active.js}"></script>
+</footer>
+
+
+</body>
+</html>

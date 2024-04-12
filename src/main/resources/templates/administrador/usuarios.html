@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout_back/layout_back :: head"></head>
+
+<body>
+
+<nav th:replace="layout/layout_back/layout_back :: navbar"></nav>
+
+<nav th:replace="layout/layout_back/layout_back :: aside"></nav>
+
+<section>
+
+
+    <div class="content-wrapper py-3">
+
+        <div class="col-md-12">
+            <div>
+                <div class="alert alert-success" th:if="${success != null}" th:text="${success}">X</div>
+                <div class="alert alert-danger" th:if="${error != null}" th:text="${error}">X</div>
+                <div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}">X</div>
+                <div class="alert alert-info" th:if="${info != null}" th:text="${info}">X</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Lista de<strong> Usuarios </strong></h3>
+                    <div class="card-tools">
+                        <span><a class="btn btn-primary" th:href="@{/administrador/form_user}" role="button">Crear usuario</a></span>
+                    </div>
+                </div>
+                <div class="card-body p-0 table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Usuario</th>
+                            <th>Rol</th>
+                            <th>Habilitado</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="users: ${lista_users}">
+                            <td th:text="${users.idUsuario}"></td>
+                            <td th:text="${users.username}"></td>
+                            <td th:each=" roles: ${users.roles}">
+                                <span th:text="${roles.nombre}"></span>
+                            </td>
+                            <td th:text="${users.habilitado == true ? 'SI' : 'NO'}"></td>
+                            <td><a class="btn btn-info btn-xs" th:href="@{/administrador/editar_usuario/} + ${users.idUsuario}">Cambiar Password</a>
+                                <span><a th:text="${users.habilitado == true ? 'Deshabilitar': 'Habilitar'}"  th:class="${users.habilitado == true} ? 'button btn btn-danger btn-xs' : 'button btn btn-success btn-xs'"  th:href="@{/administrador/users/editar/} + ${users.idUsuario}" role="button"
+                                         onclick="return confirm('¿Estas seguro que quieres habilitar/deshabilitar el usuario?');" >Habilitar</a></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                 <!-- paginador aqui -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+</section>
+
+<footer th:replace="layout/layout_back/layout_back :: footer"></footer>
+
+</body>
+</html>
